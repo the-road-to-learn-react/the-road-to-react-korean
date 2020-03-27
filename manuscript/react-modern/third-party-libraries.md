@@ -52,7 +52,7 @@ const App = () => {
 };
 ~~~~~~~
 
-이 코드에서는 명시적인 [HTTP GET 요청](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/GET)을 위해 axios의 `axios.get()`을 호출합니다. 브라우저 기본 fetch API를 이용해 기본적으로 사용한 것과 동일한 HTTP 메소드입니다. `axios.post()`와 함께 HTTP POST와 같은 다른 HTTP 메소드도 사용할 수 있습니다.
+이 코드에서는 명시적인 [HTTP GET 요청](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/GET)을 위해 axios의 `axios.get()`을 호출합니다. 브라우저 기본 fetch API를 이용해 기본적으로 사용한 것과 동일한 HTTP 메서드입니다. `axios.post()`와 함께 HTTP POST와 같은 다른 HTTP 메서드도 사용할 수 있습니다.
 
 이 예제에서 axios는 원격 API 요청을 수행하는 강력한 라이브러리임을 알아보았습니다. 요청이 복잡해지거나 또는 구형 브라우저로 작업하거나 테스트할 때는 기본 fetch API를 사용하는 것이 좋습니다.
 
