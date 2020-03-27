@@ -1,6 +1,6 @@
-## Meet another React Component
+## 컴포넌트 분리
 
-So far we've only been using the App component to create our applications. We used the App component in the last section to express everything needed to render our list in JSX, and it should scale with your needs and eventually handle more complex tasks. To help with this, we'll split some of its responsibilities into a standalone List component:
+지금까지는 App 컴포넌트만을 사용하여 애플리케이션을 만들었습니다. 이전 장에서는 리스트를 렌더링하기 위해 필요한 모든 것들을 App 컴포넌트에서 처리했습니다. 계속해서 기능을 추가하고 개발하다보면 App 컴포넌트의 점점 규모가 커질 겁니다. 드디어 이 컴포넌트를 작은 컴포넌트 덩어리로 분리 작업을 시작할 때입니다.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -26,7 +26,7 @@ function List() {
 # leanpub-end-insert
 ~~~~~~~
 
-Optional: If this component looks odd, because the outermost part of the returned JSX starts with JavaScript. We could use it with a wrapping HTML element as well, but we'll continue with the previous version.
+반환된 JSX의 가장 바깥 부분이 자바스크립트로 시작하기 때문에 컴포넌트가 이상하게 보일 수 있습니다. HTML 요소로 감싸는 방법도 있지만, 우선은 이전에 하던 방식대로 계속하겠습니다.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -45,7 +45,7 @@ function List() {
 }
 ~~~~~~~
 
-Now the new List component can be used in the App component:
+이제 새로운 List 컴포넌트를 App 컴포넌트 안에서 사용할 수 있게 됩니다.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -67,14 +67,14 @@ function App() {
 }
 ~~~~~~~
 
-You've just created your first React component! With this example, we can see how components that encapsulate meaningful tasks can work for larger React applications.
+이렇게 우리의 첫번째 리액트 컴포넌트를 만들었습니다! 이 예제를 통해 컴포넌트가 어떻게 중요한 작업들을 캡슐화하여 대규모 리액트 애플리케이션에서 동작하는지 확인할 수 있었습니다.
 
-Larger React applications have **component hierarchies** (also called **component trees**). There is usually one uppermost **entry point component** (e.g. App) that spans a tree of components below it. The App is the **parent component** of the List, so the List is a **child component** of the App. In a component tree, the App is the **root component**, and the components that don't render any other components are called **leaf components** (e.g. List). The App can have multiple children, as can the List. If the App has another child component, the additional child component is called a **sibling component** of the List.
+대규모 리액트 애플리케이션들은 **컴포넌트 계층 구조**(**컴포넌트 트리**로도 불림)를 가집니다. 일반적으로 컴포넌트 트리의 가장 높은 곳에는 **최상위 컴포넌트**(예: App)가 하나 있습니다. App은 List의 **부모 컴포넌트**이며, List는 App의 **자식 컴포넌트**가 됩니다. 컴포넌트 트리에서 App은 **루트 컴포넌트**이며, 다른 컴포넌트를 렌더링하지 않는 컴포넌트는 **리프 컴포넌트**(예: List)입니다. App은 List와 마찬가지로 여러 자식 컴포넌트를 가질 수 있습니다. 만약 App에 다른 자식 컴포넌트를 추가한다면, 추가된 자식 컴포넌트는 List의 **형제 컴포넌트**가 됩니다.
 
-### Exercises:
+### 읽어보기
 
-* Confirm your [source code for the last section](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/Meet-another-React-Component).
-  * Confirm the [changes from the last section](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/Lists-in-React...hs/Meet-another-React-Component?expand=1).
-* Draw your components -- the App component and List component -- as a component tree on a sheet of paper. Extend this component tree with other possible components (e.g. extracted Search component for the input field and label in the App component). Try to figure out which other parts can be extracted as standalone components.
-* If a Search component is used in the App component, would the Search component be a sibling, parent, or child component for the List component?
-* Ask yourself what problems could arise if we keep treating the `list` variable as global variable. We will cover how to handle these problems in the upcoming sections.
+* [지난 장에서 사용한 코드](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/Meet-another-React-Component)를 확인하세요.
+  * [지난 장에서 수정된 코드](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/Lists-in-React...hs/Meet-another-React-Component?expand=1)도 확인하세요.
+* 종이 위에 컴포넌트들(App 컴포넌트와 List 컴포넌트)을 컴포넌트 트리로 그려보세요. 다른 컴포넌트(예: App 컴포넌트에 있는 input 영역과 label을 Search 컴포넌트로 구성)를 추가하여 컴포넌트 트리를 확장해보세요. 독립 컴포넌트로 사용할 수 있는 다른 부분도 함께 찾아보세요.
+* 만약 Search 컴포넌트가 App 컴포넌트 안에서 사용된다면, Search 컴포넌트는 List 컴포넌트의 형제, 부모, 자식 컴포넌트 중 어떤 것에 해당될까요?
+* 만약 `list` 변수를 지금처럼 전역 변수로 사용한다면 어떤 문제가 발생할지 생각해보세요. 이러한 문제를 다루는 방법은 다음 장에서 다루겠습니다.
