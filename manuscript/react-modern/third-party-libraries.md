@@ -1,15 +1,15 @@
-## Third-Party Libraries in React
+## 리액트의 서드파티 라이브러리
 
-We previously introduced the native fetch API to complete requests to the Hacker News API, which the browser provides. Not all browsers support this, however, especially the older ones. Also, once you start testing your application in a [headless browser environment](https://en.wikipedia.org/wiki/Headless_browser), issues can arise with the fetch API. There are a couple of ways to make fetch work in older browsers ([polyfills](https://en.wikipedia.org/wiki/Polyfill_(programming))) and in tests (isomorphic fetch), but these concepts are a bit off-task for the purpose of this learning experience.
+이전에는 해커 뉴스 API 요청을 처리하기 위해 브라우저가 제공하는 기본 fetch API를 사용했습니다. 그러나 모든 브라우저, 특히 구형 브라우저는 이 기능을 지원하지 않습니다. 또한 [headless 브라우저 환경](https://en.wikipedia.org/wiki/Headless_browser)에서 애플리케이션 테스트를 시작하면 fetch API에서 문제가 생길 수 있습니다. 구형 브라우저([폴리필](https://en.wikipedia.org/wiki/Polyfill_(programming)))와 테스트(isomorphic fetch)에서 fetch를 수행하는 방법이 몇 가지 있지만, 이런 개념은 본 학습 목표에서 조금 벗어난 부분입니다.
 
-One alternative is to substitute the native fetch API with a stable library like [axios](https://github.com/axios/axios), which performs asynchronous requests to remote APIs. In this section, we will discover how to substitute a library--a native API of the browser in this case--with another library from the npm registry. First, install axios on the command line:
+한 가지 대안으로는 기본 fetch API를 원격 API에 비동기 요청을 수행하는 [axios](https://github.com/axios/axios)처럼 안정적인 라이브러리로 대체하는 방법이 있습니다. 이번 장에서 라이브러리(이 경우 브라우저 고유 API)를 npm 레지스트리에 등록된 다른 라이브러리로 대체하는 법을 알아봅니다. 먼저 커맨드 라인에서 axios를 설치하세요.
 
 {title="Command Line",lang="text"}
 ~~~~~~~
 npm install axios
 ~~~~~~~
 
-Second, import axios in your App component's file:
+그 다음 App 컴포넌트 파일에서 axios를 불러옵니다.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -21,7 +21,7 @@ import axios from 'axios';
 ...
 ~~~~~~~
 
-You can use `axios` instead of `fetch`, and its usage looks almost identical to the native fetch API. It takes the URL as an argument and returns a promise. You don't have to transform the returned response to JSON anymore, since axios wraps the result into a data object in JavaScript. Just make sure to adapt your code to the returned data structure:
+사용법은 기본 fetch API와 거의 동일하며, `fetch` 대신 `axios`를 사용합니다. axios는 인수로 URL을 취하고 프로미스(promise)를 반환합니다. axios는 자바스크립트 데이터 객체로 결과를 감싸므로 더는 반환된 응답을 JSON으로 바꿀 필요가 없습니다. 반환된 데이터 구조에 맞게 코드를 수정하세요.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -52,14 +52,14 @@ const App = () => {
 };
 ~~~~~~~
 
-In this code, we call axios `axios.get()` for an explicit [HTTP GET request](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/GET), which is the same HTTP method we used by default with the browser's native fetch API. You can use other HTTP methods such as HTTP POST with `axios.post()`as well.
+이 코드에서는 명시적인 [HTTP GET 요청](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/GET)을 위해 axios의 `axios.get()`을 호출합니다. 브라우저 기본 fetch API를 이용해 기본적으로 사용한 것과 동일한 HTTP 메소드입니다. `axios.post()`와 함께 HTTP POST와 같은 다른 HTTP 메소드도 사용할 수 있습니다.
 
-We can see with these examples that axios is a powerful library for performing requests to remote APIs. I recommend over the native fetch API when requests become complex, working with older browser, or for testing.
+이 예제에서 axios는 원격 API 요청을 수행하는 강력한 라이브러리임을 알아보았습니다. 요청이 복잡해지거나 또는 구형 브라우저로 작업하거나 테스트할 때는 기본 fetch API를 사용하는 것이 좋습니다.
 
-### Exercises:
+### 실습하기
 
-* Confirm your [source code for the last section](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/Third-Party-Libraries-in-React).
-  * Confirm the [changes from the last section](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/Explicit-Data-Fetching-with-React...hs/Third-Party-Libraries-in-React?expand=1).
-* Read more about [popular libraries in React](https://www.robinwieruch.de/react-libraries).
-* Read more about [why frameworks matter](https://www.robinwieruch.de/why-frameworks-matter).
-* Read more about [axios](https://github.com/axios/axios).
+* [마지막 장의 소스 코드](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/Third-Party-Libraries-in-React)를 확인하세요.
+  * [마지막 장의 변경 사항](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/Explicit-Data-Fetching-with-React...hs/Third-Party-Libraries-in-React?expand=1)을 확인하세요.
+* [리액트의 인기 라이브러리](https://www.robinwieruch.de/react-libraries)에 대해 자세히 알아보세요.
+* [프레임워크가 중요한 이유](https://www.robinwieruch.de/why-frameworks-matter)에 대해 자세히 알아보세요.
+* [axios](https://github.com/axios/axios)에 대해 자세히 알아보세요.
