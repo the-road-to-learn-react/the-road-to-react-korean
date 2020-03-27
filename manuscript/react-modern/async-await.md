@@ -1,6 +1,6 @@
-## Async/Await in React (Advanced)
+## 리액트에서의 Async와 Await(심화)
 
-You'll work with asynchronous data often in React, so it's good to know alternative syntax for handling promises: async/await. The following refactoring of the `handleFetchStories` function without error handling shows how:
+리액트에서 비동기 데이터를 자주 사용하므로 프로미스(promise) 처리를 대신할 수 있는 구문인 async와 await를 알면 좋습니다. 오류 처리 없이 `handleFetchStories` 함수를 리팩토링하는 방법은 다음과 같습니다.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -28,7 +28,7 @@ const App = () => {
 };
 ~~~~~~~
 
-To use async/await, our function requires the `async` keyword. Once you start using the `await` keyword, everything reads like synchronous code. Actions after the `await` keyword are not executed until promise resolves, meaning the code will wait.
+async와 await를 사용하려면 함수에 `async` 키워드를 붙입니다. `await` 키워드를 사용하면 모든 것을 동기 코드처럼 읽을 수 있습니다. `await` 키워드 이후의 동작은 프로미스가 처리될 때까지 실행되지 않고 기다립니다.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -58,11 +58,11 @@ const App = () => {
 };
 ~~~~~~~
 
-To include error handling as before, the `try` and `catch` blocks are there to help. If something goes wrong in the `try` block,  the code will jump into the `catch` block to handle the error. `then`/`catch` blocks and async/await with `try`/`catch` blocks are both valid for handling asynchronous data in JavaScript and React.
+`try`와 `catch` 블록은 이전처럼 오류 처리를 하는 것에 도움이 됩니다. `try` 블록에 문제가 생기면 코드는 `catch` 블록으로 넘어가서 에러를 처리합니다. `then`과 `catch` 블록, 그리고 `try`와 `catch` 블록을 이용한 async와 await 구문 모두 자바스크립트와 리액트에서 비동기 데이터를 관리하는 데에 사용할 수 있습니다.
 
-### Exercises:
+### 실습하기
 
-* Confirm your [source code for the last section](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/Async-Await-in-React).
-  * Confirm the [changes from the last section](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/Third-Party-Libraries-in-React...hs/Async-Await-in-React?expand=1).
-* Read more about [data fetching in React](https://www.robinwieruch.de/react-hooks-fetch-data).
-* Read more about [async/await in JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function).
+* [마지막 장의 소스 코드](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/Async-Await-in-React)를 확인하세요.
+  * [마지막 장의 변경 사항](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/Third-Party-Libraries-in-React...hs/Async-Await-in-React?expand=1)을 확인하세요.
+* [리액트에서 데이터 불러오기](https://www.robinwieruch.de/react-hooks-fetch-data)에 대해 자세히 알아보세요.
+* [자바스크립트의 async와 await](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function)에 대해 자세히 알아보세요.
