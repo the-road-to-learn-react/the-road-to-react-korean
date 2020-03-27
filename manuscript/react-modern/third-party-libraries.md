@@ -1,4 +1,4 @@
-## 리액트의 서드파티 라이브러리
+## 리액트의 서드 파티 라이브러리
 
 이전에는 해커 뉴스 API 요청을 처리하기 위해 브라우저가 제공하는 기본 fetch API를 사용했습니다. 그러나 모든 브라우저, 특히 구형 브라우저는 이 기능을 지원하지 않습니다. 또한 [headless 브라우저 환경](https://en.wikipedia.org/wiki/Headless_browser)에서 애플리케이션 테스트를 시작하면 fetch API에서 문제가 생길 수 있습니다. 구형 브라우저([폴리필](https://en.wikipedia.org/wiki/Polyfill_(programming)))와 테스트(isomorphic fetch)에서 fetch를 수행하는 방법이 몇 가지 있지만, 이런 개념은 본 학습 목표에서 조금 벗어난 부분입니다.
 
