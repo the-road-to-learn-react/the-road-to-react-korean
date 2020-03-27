@@ -2,7 +2,7 @@
 
 자바스크립트와 리액트에서 타입스크립트를 활용하면 애플리케이션 개발에 좋은 점이 많습니다. 타입스크립트는 커맨드 라인이나 브라우저의 런타임이 아닌 IDE에서 컴파일할 때 타입(type) 오류가 발생합니다. 이는 자바스크립트 개발의 피드백 루프를 단축합니다. 개발 경험이 향상됨과 동시에, 모든 변수의 타입을 정의하므로 코드는 코드 자체로 문서화(self-documenting)가 되고 이해하기 쉬워집니다. 또한 코드 블록을 이동하거나 코드 베이스의 더 큰 리팩토링을 수행하기 훨씬 더 효율적입니다. 타입스크립트와 같은 정적 타입 언어(statically typed languages)는 자바스크립트처럼 동적 타입 언어(dynamically typed languages)보다 장점이 많아 유행하고 있습니다. [타입스크립트에 대해](https://www.typescriptlang.org/index.html) 더 알아보세요.
 
-리액트에서 타입스크립트를 사용하기 위해, 커맨드 라인에서 애플리케이션에 타입스크립트와 해당 의존성(dependencies)을 설치하세요. 설치 과정에서 막히면 [create-react-app](https://create-react-app.dev/docs/adding-typescript/)의 공식 타입스크립트 설치 지침을 따르세요.
+리액트에서 타입스크립트를 사용하기 위해, 커맨드 라인에서 애플리케이션에 타입스크립트와 해당 의존성을 설치하세요. 설치 과정에서 막히면 [create-react-app](https://create-react-app.dev/docs/adding-typescript/)의 공식 타입스크립트 설치 지침을 따르세요.
 
 {title="Command Line",lang="text"}
 ~~~~~~~
@@ -18,7 +18,7 @@ mv src/index.js src/index.tsx
 mv src/App.js src/App.tsx
 ~~~~~~~
 
-커맨드 라인에서 개발 서버를 다시 시작하세요. 브라우저와 IDE에서 컴파일 오류가 발생할 수 있습니다. 동작하지 않는다면 에디터에 타입스크립트 플러그인이나 IDE의 확장 기능을 설치해보세요. 리액트에서 타입스크립트를 설정한 뒤, 사용자 정의 훅(custom hook)의 인수(arguments)에 타입을 지정하여 전체 *src/App.tsx* 파일에 대한 타입 안전성(type safety)을 높입니다.
+커맨드 라인에서 개발 서버를 다시 시작하세요. 브라우저와 IDE에서 컴파일 오류가 발생할 수 있습니다. 동작하지 않는다면 에디터에 타입스크립트 플러그인이나 IDE의 확장 기능을 설치해보세요. 리액트에서 타입스크립트를 설정한 뒤, 사용자 정의 훅의 인수에 타입을 지정하여 전체 *src/App.tsx* 파일에 대한 타입 안전성을 높입니다.
 
 {title="src/App.tsx",lang="javascript"}
 ~~~~~~~
@@ -418,5 +418,5 @@ const InputWithLabel = ({
 
 * [마지막 장의 소스 코드](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/TypeScript-in-React)를 확인하세요.
   * [마지막 장의 변경 사항](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/react-modern-final...hs/TypeScript-in-React?expand=1)을 확인하세요.
-* [React + TypeScript Cheatsheet](https://github.com/typescript-cheatsheets/react-typescript-cheatsheet#reacttypescript-cheatsheets)를 살펴보세요. 이 장에서 보았던 가장 일반적인 사용 예시도 다룹니다. 당장 이해하지 못해도 상관 습니다.
+* [React + TypeScript Cheatsheet](https://github.com/typescript-cheatsheets/react-typescript-cheatsheet#reacttypescript-cheatsheets)를 살펴보세요. 이 장에서 보았던 가장 일반적인 사용 예시도 다룹니다. 당장 이해하지 못해도 상관 없습니다.
 * 계속해서 다음 장을 공부하면서 타입스크립트를 사용하여 타입을 없애거나 유지해보세요. 타입을 유지하는 경우, 컴파일 오류가 발생할 때마다 새 타입을 추가하세요.
