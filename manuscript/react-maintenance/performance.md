@@ -174,8 +174,6 @@ const List = React.memo(
 # leanpub-end-insert
 ~~~~~~~
 
-However, the output stays the same when typing into the SearchForm's input field:
-
 하지만 SearchForm의 입력 필드에 입력할 때 출력은 변하지 않습니다.
 
 {title="Visualization",lang="text"}
@@ -273,8 +271,6 @@ const App = () => {
 
 SearchForm에 입력이 들어올 때마다 계산을 실행해서는 안됩니다. 이제 이 계산은 `stories`에 해당하는 종속성 배열이 변하는 경우에만 실행됩니다. 하지만 이것은 컴포넌트 (재)렌더링의 지연을 가져올 수 있는 값비싼 계산에만 사용되어야 합니다.
 
-Now, after we went through these scenarios for `useMemo`, `useCallback`, and `memo`, remember that these shouldn't necessarily be used by default. Apply these performance optimization only if you run into a performance bottlenecks. Most of the time this shouldn't happen, because React's rendering mechanism is pretty efficient by default. Sometimes the check for utilities like `memo` can be more expensive than the re-rendering itself.
-
 이제 `useMemo`, `useCallback`, 그리고 `memo`를 사용하는 시나리오를 모두 검토했으니 이것을 기본적으로 사용할 필요는 없음을 기억하세요. 이러한 성능 최적화는 성능 병목을 마주했을 때만 적용하세요. 대부분의 경우 리액트의 렌더링 메커니즘이 기본적으로 꽤 효율적이기 때문에 사용할 일이 없을 것입니다. 경우에 따라서 재렌더링 자체보다 `memo`와 같은 유틸리티를 확인하는 것이 더 값비싸질 수도 있습니다.
 
 ### 읽어보기
@@ -284,11 +280,6 @@ Now, after we went through these scenarios for `useMemo`, `useCallback`, and `me
 * [리액트 useCallback 훅](https://reactjs.org/docs/hooks-reference.html#usecallback)에 대해 더 읽어보세요.
 
 ### 실습하기
-* Download *React Developer Tools* as an extension for your browser. Open it for your application in the browser via the browser's developer tools and try its various features. For instance, you can use it to visualize React's component tree and its updating components.
-* Does the SearchForm re-render when removing an item from the List with the "Dismiss" button? If it's the case, apply performance optimization techniques to prevent re-rendering.
-* Does each Item re-render when removing an item from the List with the "Dismiss" button? If it's the case, apply performance optimization techniques to prevent re-rendering.
-* Remove all performance optimizations to keep the application simple. Our current application doesn't suffer from any performance bottlenecks. Try to avoid [premature optimzations](https://en.wikipedia.org/wiki/Program_optimization). Use this section as reference, in case you run into performance problems.
-
 * 브라우저 확장 기능인 **리액트 개발자 도구**를 다운로드 받으세요. 브라우저의 애플리케이션을 위해 브라우저 개발자 도구로 확장 기능을 열고 다양한 기능을 시도해 보세요. 예를 들어, 리액트 컴포넌트 트리와 업데이트 되는 컴포넌트를 시각화 하는데 사용할 수 있습니다.
 * List에서 "Dismiss" 버튼을 사용하여 아이템을 제거할 때 SearchForm이 재렌더링 되나요? 만약 그렇다면 재렌더링을 방지하기 위한 성능 최적화 기술을 적용해 보세요.
 * List에서 "Dismiss" 버튼을 사용하여 아이템을 제거할 때 각 Item은 재렌더링 되나요? 만약 그렇다면 재렌더링을 방지하기 위한 성능 최적화 기술을 적용해 보세요.
