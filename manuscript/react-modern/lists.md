@@ -53,14 +53,14 @@ function App() {
 # leanpub-end-insert
 
 # leanpub-start-insert
-      {/* 여기에서 리스트를 렌더링 해보세요 */}
+      {/* 여기에서 리스트가 렌더링 됩니다 */}
 # leanpub-end-insert
     </div>
   );
 }
 ~~~~~~~
 
-[자바스크립트의 내장 배열 메서드 map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)을 사용하면 리스트에 있는 각 아이템에 접근하고 이들을 새로운 리스트로 반환할 수 있습니다.
+[자바스크립트 배열 map 메서드](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)을 사용하면 리스트에 있는 각 아이템에 접근하고 이들을 새로운 리스트로 반환할 수 있습니다.
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~
@@ -175,7 +175,7 @@ JSX에서는 map 함수를 인라인 형태로 간결하게 사용할 수 있습
 * [지난 장에서 사용한 코드](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/Lists-in-React)를 확인하세요.
   * [지난 장에서 수정된 코드](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/React-JSX...hs/Lists-in-React?expand=1)를 확인하세요.
 * 왜 리액트에서 키 속성을 필요로 하는지 확인하세요([0](https://dev.to/jtonzing/the-significance-of-react-keys---a-visual-explanation--56l7), [1](https://www.robinwieruch.de/react-list-key), [2](https://reactjs.org/docs/lists-and-keys.html)). 아직 구현에 대해 이해하지 못하더라도 걱정하지 말고, 동적 리스트를 생성할 때 어떤 문제가 발생하는지에만 집중하세요.
-* [표준 내장 배열 메서드](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/)를 복습해보세요. 특히 map, filter, reduce를 중점으로 보면 좋습니다. 이들은 네이티브 자바스크립트에서도 사용할 수 있습니다.
+* [자바스크립트 배열 메서드](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/)를 복습해보세요. 특히 map, filter, reduce를 중점으로 보면 좋습니다. 이들은 네이티브 자바스크립트에서도 사용할 수 있습니다.
 * JSX 대신에 `null`을 반환하면 어떤 일이 일어날까요?
 * 몇 가지 아이템을 더 추가하여 예제 리스트를 보다 현실적으로 만들어보세요.
 * 예제에서 사용한 방법 외에도 다른 방식으로 JSX에서 자바스크립트를 사용해보세요.
