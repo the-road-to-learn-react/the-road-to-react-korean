@@ -2,9 +2,9 @@
 
 <더 로드 투 런(2020)>는 IT업계 여성 글로벌 네트워크인 비영리 활동 단체 [위민 후 코드 서울(Women Who Code Seoul)](https://www.womenwhocode.com/seoul) 멤버들을 주축으로 번역 및 출판되었습니다.
 
-#### 강지우
--
--
+#### 강지우 (@constmoon)
+- [Blog](https://constmoon.github.io) · [GitHub](https://github.com/constmoon) · [Twitter](https://twitter.com/constmoon)
+- 서비스와 사용자를 잇는 인터페이스를 만들 때 즐거움을 느끼는 프론트엔드 개발자입니다. 기술로 더 나은 사회를 만들고자 하는 활동에 관심이 많습니다.
 
 #### 구예인 (@yein9)
 - [GitHub](https://github.com/yein9/)
