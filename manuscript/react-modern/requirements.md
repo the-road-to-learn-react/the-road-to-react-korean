@@ -12,11 +12,11 @@
 
 로컬 환경에서 코드 에디터/터미널 또는 IDE를 설정하고 싶지 않다면 온라인 코드 에디터인 [코드샌드박스(CodeSandbox)](https://codesandbox.io/)를 사용할 수 있습니다. 코드샌드박스는 온라인으로 코드를 공유하는 데에 유용한 도구이지만, 로컬 환경에 설정하는 것이 웹 애플리케이션을 만드는 다양한 방법을 배우기에는 더 좋습니다. 또한 전문적으로 애플리케이션을 개발하려면 로컬 설정이 필요합니다.
 
-### Node와 NPM
+### Node.js와 NPM
 
-시작하기 전에, [node(노드)와 npm](https://nodejs.org/en/)을 설치해야 합니다. 둘 다 앞으로 필요한 라이브러리(노드 패키지)를 관리하는 데 사용됩니다. 이러한 노드 패키지는 라이브러리가 될 수도 있고, 전체 프레임워크일 수도 있습니다. 여기서는 npm(node package manager, 노드 패키지 관리자) 명령어를 통해 외부 노드 패키지를 설치합니다.
+시작하기 전에, [Node.js와 npm](https://nodejs.org/en/)을 설치해야 합니다. 둘 다 앞으로 필요한 라이브러리(Node.js의 패키지)를 관리하는 데 사용됩니다. 이러한 노드 패키지는 라이브러리가 될 수도 있고, 전체 프레임워크일 수도 있습니다. 여기서는 npm(node package manager, 노드 패키지 관리자) 명령어를 통해 외부 노드 패키지를 설치합니다.
 
-`node --version`을 사용하여 현재 노드 및 npm 버전을 확인할 수 있습니다. 화면에 버전이 표시되지 않으면 노드 및 npm을 설치해야 합니다.
+`node --version`을 사용하여 현재 Node.js 및 npm 버전을 확인할 수 있습니다. 화면에 버전이 표시되지 않으면 Node.js 및 npm을 설치해야 합니다.
 
 {title="Command Line",lang="text"}
 ~~~~~~~
@@ -26,13 +26,13 @@ npm --version
 *vXX.YY.ZZ
 ~~~~~~~
 
-노드와 npm을 이미 설치한 경우, 최신 버전인지 확인하세요. npm을 처음 사용하거나 다시 설치할 경우, [npm 충돌을 해결하는 방법](https://www.robinwieruch.de/npm-crash-course)을 통해 속도를 높일 수 있습니다.
+Node.js와 npm을 이미 설치한 경우, 최신 버전인지 확인하세요. npm을 처음 사용하거나 다시 설치할 경우, [npm 충돌을 해결하는 방법](https://www.robinwieruch.de/npm-crash-course)을 통해 속도를 높일 수 있습니다.
 
 ## 리액트 프로젝트 설정하기
 
 이 책에서는 [create-react-app](https://github.com/facebook/create-react-app)를 사용하여 애플리케이션을 부트스트래핑합니다. 부트스트래핑(bootstrapping)이라는 뜻은 애플리케이션을 최초 생성하여 브라우저에서 실행하는 과정을 말합니다.  *create-react-app*은 2016년 페이스북이 제안한 리액트 제로 구성 설치 스타터 킷(Zero-Configuration Setup Starter Kit)입니다. 트위터에서 진행한 한 [조사](https://twitter.com/dan_abramov/status/806985854099062785)에 따르면 96% 이상의 리액트 개발자들이 입문자의 경우 create-react-app 사용을 권장하고 있습니다. create-react-app은 리액트 개발 도구와 환경 설정이 이미 세팅되어 있기 때문에, 우리는 오롯이 애플리케이션 구현에만 신경 쓰면 됩니다.
 
-노드와 npm을 설치한 후 터미널을 사용하여 프로젝트 폴더에 다음 명령어를 입력하세요. 이 프로젝트를 *hacker stories*라고 하겠습니다. 물론 다른 이름을 사용해도 괜찮습니다.
+Node.js와 npm을 설치한 후 터미널을 사용하여 프로젝트 폴더에 다음 명령어를 입력하세요. 이 프로젝트를 *hacker stories*라고 하겠습니다. 물론 다른 이름을 사용해도 괜찮습니다.
 
 {title="Command Line",lang="text"}
 ~~~~~~~
