@@ -1,4 +1,4 @@
-## 리액트에서의 Async와 Await(심화)
+## [심화] 리액트에서 Async와 Await 사용하기
 
 리액트에서 비동기 데이터를 자주 사용하므로 프로미스(promise) 처리를 대신할 수 있는 구문인 async와 await를 알면 좋습니다. 오류 처리 없이 `handleFetchStories` 함수를 리팩토링하는 방법은 다음과 같습니다.
 
