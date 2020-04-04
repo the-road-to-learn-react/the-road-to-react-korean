@@ -15,7 +15,7 @@ ReactDOM.render(
 );
 ~~~~~~~
 
-`react-dom`이라고도 불리는 라이브러리는 `ReactDOM.render()` 메서드를 통해 HTML의 DOM 노드를 JSX로 바꿔줍니다. 이 과정을 통해 리액트를 HTML로 통합할 수 있게 됩니다. `ReactDOM.render()`에는 두 개의 인자가 필요합니다. 첫 번째 인자는 화면에 표시할 JSX 입니다. App 컴포넌트가 아닌 간단한 JSX여도 됩니다. 반드시 컴포넌트의 인스턴스를 주어야 하는 것은 아닙니다.
+리액트에 이어 반드시 포함해야 하는 라이브러리는 `react-dom`입니다. 이 라이브러리는  `ReactDOM.render()` 메서드를 통해 HTML의 DOM 노드를 JSX로 바꿔줍니다. 이 과정을 통해 리액트를 HTML로 통합할 수 있게 됩니다. `ReactDOM.render()`에는 두 개의 인자가 필요합니다. 첫 번째 인자는 화면에 표시할 JSX 입니다. App 컴포넌트가 아닌 간단한 JSX여도 됩니다. 반드시 컴포넌트의 인스턴스를 주어야 하는 것은 아닙니다.
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~
