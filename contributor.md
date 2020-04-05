@@ -12,7 +12,7 @@
 
 #### 김해수 (@haesookim)
 - [GitHub](https://github.com/haesookim/) · [Homepage](http://haesookim.info/) · [Twitter](https://twitter.com/haesooheatherk)
-- Human-Computer Interaction에 관심이 많은 학생입니다. 사람이 더 잘 활용할 수 있는 컴퓨터 시스템을 개발하는 데 흥미가 있습다.
+- Human-Computer Interaction에 관심이 많은 학생입니다. 사람이 더 잘 활용할 수 있는 컴퓨터 시스템을 개발하는 데 흥미가 있습니다.
 
 #### 박은정 (@ejolie)
 - [GitHub](https://github.com/ejolie)
