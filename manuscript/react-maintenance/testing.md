@@ -585,10 +585,10 @@ describe('Item', () => {
 
 Jest는 이후 스냅샷 테스트와의 비교를 위해 스냅샷을 한 폴더 안에 저장합니다. 사용자들은 버전 관리(git 등)을 위해 여러 팀 간에 이와 같은 스냅샷들을 공유할 수도 있습니다. 스냅샷 테스트를 처음 실행하면, 프로젝트 폴더 안에 스냅샷 파일이 생성됩니다. 테스트를 다시 실행하면 이 스냅샷은 직전 테스트 결과와 일치하는지 여부를 확인하게 됩니다. 이와 같은 절차를 통해 DOM이 유지되는 것을 보장할 수 있습니다.
 
-### Exercises:
+### 실습하기:
 
-* Confirm your [source code for the last section](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/react-testing).
-  * Confirm the [changes from the last section](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/react-modern-final...hs/react-testing?expand=1).
+* [마지막 장의 소스 코드](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/react-testing)를 확인하세요.
+  * [마지막 장의 변경 사항](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/react-modern-final...hs/react-testing?expand=1)을 확인하세요.
 * 모든 컴포넌트에 대해 스냅샷 테스트를 하나씩 작성하세요.
 * [리액트 컴포넌트 테스트](https://www.robinwieruch.de/react-testing-tutorial)에 대해 더 알아봅니다.
   * 유닛 테스트, 통합 테스트, 스냅샷 테스트에 더 알아보기 위해 [Jest](https://jestjs.io/) 와 [Jest for React](https://www.robinwieruch.de/react-testing-jest/)를 활용할 수 있습니다.
