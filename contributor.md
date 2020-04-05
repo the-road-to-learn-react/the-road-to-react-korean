@@ -18,7 +18,9 @@
 - [GitHub](https://github.com/ejolie)
 - 기술과 사람에 관심이 많은 소프트웨어 엔지니어입니다. 새로운 것을 배우고, 만들고, 공유하는 것을 좋아합니다.
 
-#### 배예슬
+#### 배예슬 (@YeSeulBae)
+- [Github](https://github.com/YeSeulBae)
+- Java 백엔드 소프트웨어 엔지니어 입니다. 누구나 쉽게 이해하고 빠르게 수정할 수 있는 코드를 만드려고 합니다.
 
 #### 오예슬 (@yeseulo)
 - [GitHub](https://github.com/yeseulo/) · [Homepage](https://yeseulo.kr/)
