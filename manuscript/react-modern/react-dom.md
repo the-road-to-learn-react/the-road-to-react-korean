@@ -1,6 +1,6 @@
-## React DOM
+## 리액트 DOM
 
-Now that we've learned about component definitions and their instantiation, we can move to the App component's instantiation. It has been in our application from the start, in the *src/index.js* file:
+앞서 컴포넌트 정의 및 인스턴스화에 대해 배웠으므로 App 컴포넌트에도 적용해봅시다. App 컴포넌트는 리액트 세계로의 진입점인 *src/index.js*에서 사용됩니다.
 
 {title="src/index.js",lang="javascript"}
 ~~~~~~~
@@ -15,7 +15,7 @@ ReactDOM.render(
 );
 ~~~~~~~
 
-Next to React, there is another imported library called `react-dom`, in which a `ReactDOM.render()` function uses an HTML node to replace it with JSX. The process integrates React into HTML. `ReactDOM.render()` expects two arguments; the first is to render the JSX. It creates an instance of your App component, though it can also pass simple JSX without any component instantiation.
+리액트에 이어 반드시 포함해야 하는 라이브러리는 `react-dom`입니다. 이 라이브러리는  `ReactDOM.render()` 메서드를 통해 HTML의 DOM 노드를 JSX로 바꿔줍니다. 이 과정을 통해 리액트를 HTML로 통합할 수 있게 됩니다. `ReactDOM.render()`에는 두 개의 인자가 필요합니다. 첫 번째 인자는 화면에 표시할 JSX 입니다. App 컴포넌트가 아닌 간단한 JSX여도 됩니다. 반드시 컴포넌트의 인스턴스를 주어야 하는 것은 아닙니다.
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~
@@ -25,10 +25,10 @@ ReactDOM.render(
 );
 ~~~~~~~
 
-The second argument specifies where the React application enters your HTML. It expects an element with an `id='root'`, found in the *public/index.html* file. This is a basic HTML file.
+두 번째 인자는 리액트 애플리케이션이 들어갈 HTML상의 위치입니다. 예제에서는 `id`가 `root`인 엘레먼트에 넣으려 하는데, *public/index.html* 파일에 해당 엘레먼트가 있습니다.
 
-### Exercises:
+### 읽어보기
 
-* Open the *public/index.html* to see where the React application enters your HTML.
-* Consider how we can include a React application in an external web application that uses HTML.
-* Read more about [rendering elements in React](https://reactjs.org/docs/rendering-elements.html).
+* *public/index.html*을 열어 리액트 애플리케이션이 삽입될 HTML상의 위치를 찾아보세요.
+* HTML을 사용하는 외부 애플리케이션에 어떻게 리액트 애플리케이션을 삽입할 수 있을지 생각해보세요.
+* [리액트의 엘레먼트 렌더링](https://reactjs.org/docs/rendering-elements.html)에 대해 더 읽어보세요.
