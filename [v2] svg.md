@@ -1,4 +1,4 @@
-[v2] SVG 사용
+[v2] svg
 
 최신 React 애플리케이션을 만들기 위해, SVG를 사용하는 것이 좋습니다. 모든 버튼 개체 텍스트를 만드는 대신, 예를 들면, 여러분들은 아이콘으로 좀 더 가볍게 만들 수 있습니다. 이번에는 React components 중 하나인 scalable vector graphic (SVG)를 사용해 보겠습니다. 
 
