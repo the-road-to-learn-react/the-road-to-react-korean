@@ -346,7 +346,7 @@ const App = () => {
 
 이제 인기있는 기사 데이터를 계속해서 불러올 수 있습니다. 외부 API를 활용할 때는 항상 해당 API로 작업 가능한 범위를 알아두는 것이 좋습니다. 외부 API는 각기 다른 데이터 구조로 되어있어 특징도 다릅니다. (번역자: 마지막 문장은... 의미를 잘 모르겠어서 skip 합니다.)
 
-### 연습문제:
+### 실습하기
 
 - [마지막 장의 소스 코드](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/Paginated-Fetch)를 확인합니다.
   - [마지막 장에서 변경된 코드](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/Remember-Last-Searches...hs/Paginated-Fetch?expand=1)를 확인합니다.

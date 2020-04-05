@@ -224,7 +224,7 @@ const List = ({ list, onRemoveItem }) => {
 
 둘째로 사용자가 선택할 수 있는 HTML 버튼들을 만들었습니다. 그리고 버튼을 눌렀을 때 정렬 상태값이 바뀌도록 했습니다. 마지막으로 정렬 상태값을 활용해 실제 목록을 정렬했습니다.
 
-### 연습문제:
+### 실습하기
 
 - [마지막 장의 소스 코드](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/Sort)를 확인합니다.
   - [마지막 장에서 변경된 코드](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/react-modern-final...hs/Sort?expand=1)를 확인합니다.

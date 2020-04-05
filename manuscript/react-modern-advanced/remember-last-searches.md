@@ -410,7 +410,7 @@ const LastSearches = ({ lastSearches, onLastSearch }) => (
 
 만들기 쉽지 않은 기능이었습니다. 다양한 React 기초 지식은 물론 자바스크립트 지식이 요구되는 작업이었습니다. 혼자 설명을 읽고 기능을 만들면서 어려움을 느끼지 않았다면 훌륭한 실력을 갖춘 것입니다. 만약 어려움을 느꼈더라도 걱정할 필요 없습니다. 이 문제를 다른 방식으로 해결할 수도 있고, 어쩌면 그 방법이 제가 설명드린 방법보다 더 단순할지도 모릅니다.
 
-### 연습문제:
+### 실습하기
 
 - [마지막 장의 소스 코드](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/Remember-Last-Searches)를 확인합니다.
   - [마지막 장에서 변경된 코드](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/Reverse-Sort...hs/Remember-Last-Searches?expand=1)를 확인합니다.

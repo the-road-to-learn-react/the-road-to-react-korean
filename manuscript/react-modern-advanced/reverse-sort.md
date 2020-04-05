@@ -120,7 +120,7 @@ console.log(user);
 
 이에 대한 내용이 더 궁금하다면 [JavaScript Object Initializers](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer)를 참고하세요.
 
-### 연습문제:
+### 실습하기
 
 - [마지막 장의 소스 코드](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/Reverse-Sort))를 확인합니다.
   - [마지막 장에서 변경된 코드](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/Sort...hs/Reverse-Sort?expand=1)를 확인합니다.
