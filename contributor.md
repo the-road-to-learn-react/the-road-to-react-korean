@@ -10,7 +10,9 @@
 - [GitHub](https://github.com/yein9/)
 - 현재 소프트웨어를 공부하는 학생입니다. 데이터 분석, 딥러닝, 웹에 흥미가 있습니다. 이번 첫 번역으로 계기로 앞으로 다양한 분야에 대해 번역을 해보고 싶습니다.
 
-#### 김해수
+#### 김해수 (@haesookim)
+- [GitHub](https://github.com/haesookim/) · [Homepage](http://haesookim.info/) · [Twitter](https://twitter.com/haesooheatherk)
+- Human-Computer Interaction에 관심이 많은 학생입니다. 사람이 더 잘 활용할 수 있는 컴퓨터 시스템을 개발하는 데 흥미가 있습다.
 
 #### 박은정 (@ejolie)
 - [GitHub](https://github.com/ejolie)
