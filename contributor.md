@@ -1,6 +1,6 @@
 # 옮긴이 소개
 
-<더 로드 투 런(2020)>는 IT업계 여성 글로벌 네트워크인 비영리 활동 단체 [위민 후 코드 서울(Women Who Code Seoul)](https://www.womenwhocode.com/seoul) 멤버들을 주축으로 번역 및 출판되었습니다.
+<더 로드 투 런 리액트(2020)>는 IT업계 여성 글로벌 네트워크인 비영리 활동 단체 [위민 후 코드 서울(Women Who Code Seoul)](https://www.womenwhocode.com/seoul) 멤버들을 주축으로 번역 및 출판되었습니다.
 
 #### 강지우 (@constmoon)
 
@@ -47,8 +47,9 @@
 - [GitHub](https://github.com/aeriChoi)
 - 더 좋은 사용자 경험을 제공하는 것에 관심이 많은 프론트엔드 개발자입니다. 배운 것을 공유하고 사람들과 함께 성장하고 싶어 번역에 참여하였습니다. 앞으로도 다양한 활동을 통해 사람들과 함께 성장해 가고 싶습니다.
 
-#### 최현지
+#### 최현지 (@hjbc0921)
 
 - [GitHub](https://github.com/hjbc0921/)
 - 컴퓨터공학 석사 과정을 밟고 있습니다. 프레임워크와 딥러닝 모델의 성능 향상에 관심이 많습니다.
+- 
   {pagebreak}
