@@ -1,8 +1,8 @@
-## React Advanced State
+## 리액트 상태 관리 (심화)
 
-All state management in this application makes heavy use of React's useState Hook. More sophisticated state management gives you **React's useReducer Hook**, though. Since the concept of reducers in JavaScript splits the community in half, we won't cover it extensively here, but the exercises at the end of this section should give you plenty of practice.
+어플리케이션의 모든 상태 관리는 리액트의 useState 훅을 많이 사용합니다. 보다 정교한 상태 관리는 리액트의 **useReducer** 훅을 통해 이루어집니다. 자바스크립트의 리듀서 개념은 커뮤니티를 반으로 나누기에 여기서는 다루지 않습니다. 하지만 글의 끝에서 제공되는 연습문제는 당신에게 많은 연습이 될 것입니다.
 
-We'll move the `stories` state management from the `useState` hook to a new `useReducer` hook. First, introduce a reducer function outside of your components. A reducer function always receives `state` and `action`. Based on these two arguments, a reducer always returns a new state:
+우리는 `stories`의 상태 관리를 `useState` 훅에서 `useReducer` 훅으로 옮길 것입니다. 먼저, 컴포넌트 외부에 reducer를 생성하세요. 이 리듀서는 항상 `state`와 `action`을 받습니다. 이 두 인자를 기반으로 리듀서는 항상 새로운 상태를 반환합니다.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -17,9 +17,9 @@ const storiesReducer = (state, action) => {
 # leanpub-end-insert
 ~~~~~~~
 
-A reducer `action` is often associated with a `type`. If this type matches a condition in the reducer, do something. If it isn't covered by the reducer, throw an error to remind yourself the implementation isn't covered. The `storiesReducer` function covers one `type, and then returns the `payload` of the incoming action without using the current state to compute the new state. The new state is simply the `payload`.
+리듀서의 `action`은 `타입`과 관련 있습니다. 리듀서의 조건과 타입이 일치할 경우 동작이 수행되며 조건이 일치하지 않을 경우 오류를 반환합니다. `storiesReducer`는 하나의 `타입을 포함한 후 현재 상태를 사용하여 새 상태를 계산하지 않고 들어오는 action의` 데이터를 전달합니다. `새로운 상태는 단순히` 전달된 데이터에 불과합니다.
 
-In the App component, exchange `useState` for `useReducer` for managing the `stories`. The new hook receives a reducer function and an initial state as arguments and returns an array with two items. The first item is the *current state*; the second item is the *state updater function* (also called *dispatch function*):
+앱 컴포넌트 안에서 `stories`를 관리하려면 `useState`를 `useReducer`로 교환하십시오. 새로운 훅은 리듀서의 초기 상태를 인자로 받고 두 요소가 있는 배열을 반환합니다. 첫 요소는 현재 상태이며, 두 번째 요소는 상태를 업데이트하는 함수입니다. (디스패치 함수라고도 합니다.)
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -37,7 +37,7 @@ const App = () => {
 };
 ~~~~~~~
 
-The new dispatch function can be used instead of the `setStories` function, which was returned from `useState`. Instead of setting state explicitly with the state updater function from `useState`, the `useReducer` state updater function dispatches an action for the reducer. The action comes with a `type` and an optional payload:
+`useState`에서 반환된 `setStories`함수 대신 새 디스패치 기능을 사용할 수 있습니다. `useState`에 명시적으로 상태를 업데이트하는 대신 `useReducer`의 상태 업데이트 기능은 리듀서에 디스패치를 통해 action을 보냅니다. action은 타입과 지정된 데이터와 함께 제공됩니다.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -79,9 +79,9 @@ const App = () => {
 };
 ~~~~~~~
 
-The application appears the same in the browser, though a reducer and React's `useReducer` hook are managing the state for the stories now. Let's bring the concept of a reducer to a minimal version by handling more than one state transition.
+리듀서와 리액트의 `useReducer` 훅이 이제 스토리의 상태를 관리하지만 애플리케이션은 브라우저에서 동일하게 나타납니다. 상태 전환 처리 후, 리듀서를 최소 버전으로 가져오십시오.
 
-So far, the `handleRemoveStory` handler computes the new stories. It's valid to move this logic into the reducer function and manage the reducer with an action, which is another case for moving from imperative to declarative programming. Instead of doing it ourselves by saying *how it should be done*, we are telling the reducer *what to do*. Everything else is hidden in the reducer.
+`handleRemoveStory`핸들러는 새 스토리를 계산합니다. 이 로직을 리듀서로 옮기고 action으로 리듀서를 관리하는 것이 유효합니다. 이는 명령형에서 선언형 프로그래밍으로 변경하는 예입니다. *어떻게 해야 하는지* 직접 말하는 대신 리듀서에 *무엇을 해야 하는지* 말하고 있습니다. 다른 많은 것들도 리듀서 안에 숨겨져 있습니다.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -101,7 +101,7 @@ const App = () => {
 };
 ~~~~~~~
 
-Now the reducer function has to cover this new case in a new conditional state transition. If the condition for removing a story is met, the reducer has all the implementation details needed to remove the story. The action gives all the necessary information, an item's identifier`, to remove the story from the current state and return a new list of filtered stories as state.
+이제 리듀서는 새로운 조건부의 상태 변경 사례를 처리해야합니다. 스토리를 삭제하는 조건이 충족 되면 리듀서는 스토리를 제거하기 위해 필요한 모든 구현 세부사항을 가지게 됩니다. 이는 현재 상태에서 스토리를 제거하고 필터링 된 스토리의 새 목록을 상태로 리턴하는 데 필요한 모든 정보 (항목 ID)를 제공합니다.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -120,7 +120,7 @@ const storiesReducer = (state, action) => {
 };
 ~~~~~~~
 
-All these if else statements will eventually clutter when adding more state transitions into one reducer function. Refactoring it to a switch statement for all the state transitions makes it more readable:
+리듀서에 많은 상태 변경을 추가할 경우 if else 문을 사용하면 복잡해집니다. switch 문으로 리팩토링하면 읽기 쉽습니다.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -140,13 +140,14 @@ const storiesReducer = (state, action) => {
 };
 ~~~~~~~
 
-What we've covered is a minimal version of a reducer in JavaScript. It covers two state transitions, shows how to compute current state and action into a new state, and uses some business logic (removal of a story). Now we can set a list of stories as state for the asynchronously arriving data, and remove a story from the list of stories, with just one state managing reducer and its associated `useReducer` hook.
+우리가 다룬 것은 자바스크립트에서 최소 버전의 리듀서 개념입니다. 두 가지 상태 변경을 다루고 현재 상태와 동작을 새로운 상태로 계산하는 방법을 보여 주며 일부 비즈니스 로직 (스토리 제거)을 사용합니다. 이제 비동기적으로 도착하는 데이터의 상태로 스토리 목록을 설정하고 하나의 상태 관리 리듀서와 관련된 `useReducer`훅을 사용하여 스토리 목록에서 스토리를 제거 할 수 있습니다.
 
-To fully grasp the concept of reducers in JavaScript and the usage of React's useReducer Hook, visit the linked resources in the exercises.
+자바스크립트에서 리듀서 개념과 리액트의 useReducer 훅 사용법을 완전히 이해하려면 연습 링크를 확인하십시오.
 
-### Exercises:
+### 실습하기:
 
-* Confirm your [source code for the last section](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/React-Advanced-State).
-  * Confirm the [changes from the last section](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/React-Conditional-Rendering...hs/React-Advanced-State?expand=1).
-* Read more about [reducers in JavaScript](https://www.robinwieruch.de/javascript-reducer).
-* Read more about reducers and useReducer in React ([0](https://www.robinwieruch.de/react-usereducer-hook), [1](https://reactjs.org/docs/hooks-reference.html#usereducer)).
+
+* [마지막 장의 소스 코드를 확인하세요](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/React-Advanced-State).
+  * [마지막 장의 변경 사항을 확인하세요](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/React-Conditional-Rendering...hs/React-Advanced-State?expand=1).
+* [자바스크립트 Reducer](https://www.robinwieruch.de/javascript-reducer)에 대해 자세히 알아보세요.
+* 리액트 Reducer와 useReducer ([0](https://www.robinwieruch.de/react-usereducer-hook), [1](https://reactjs.org/docs/hooks-reference.html#usereducer))에 대해 자세히 알아보세요.
