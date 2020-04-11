@@ -87,6 +87,6 @@ const App = () => {
 ### 실습하기:
 
 * [마지막 장의 소스 코드를 확인하세요](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/React-Component-Composition).
-  * Confirm the [마지막 장의 변경 사항을 확인하세요](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/Reusable-React-Component...hs/React-Component-Composition?expand=1).
+  * [마지막 장의 변경 사항을 확인하세요](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/Reusable-React-Component...hs/React-Component-Composition?expand=1).
 * 리액트 컴포넌트 구성 ([0](https://www.robinwieruch.de/react-component-composition), [1](https://reactjs.org/docs/composition-vs-inheritance.html))에 대해 자세히 알아보세요.
 * InputWithLabel 컴포넌트에 간단한 문자열을 렌더링하는 `children`컴포넌트를 만드십시오.
