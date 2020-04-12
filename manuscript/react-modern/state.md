@@ -1,8 +1,8 @@
-## React State
+## 리액트 상태
 
-React Props are used to pass information down the component tree; **React state** is used to make applications interactive. We'll be able to change the application's appearance by interacting with it.
+컴포넌트 트리에 정보를 전달할 때 리액트 props를 사용합니다. **리액트 상태**는 애플리케이션을 대화형으로 만들 때 사용합니다. 상태와 상호작용을 하면서 애플리케이션의 모습을 바꿀 수 있습니다.
 
-First, there is a utility function called `useState` that we take from `React` for managing state. The `useState` function is called a hook. There is more than one **React hook** -- related to state management but also other things in React -- and you will learn about them throughout the next sections. For now, let's focus on **React's `useState` hook**:
+먼저 상태 관리를 위한 `리액트`의 `useState`라는 유틸리티 함수가 있습니다. `useState` 함수를 훅(hook)이라고 합니다. 리액트에는 상태 관리와 관련된 하나 이상의 **리액트 훅**이 있으며 또 다른 것도 있습니다. 다음 장에서 배우게 됩니다. 지금은 **리액트의 `useState` 훅**을 살펴보겠습니다.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -17,9 +17,9 @@ const App = () => {
 };
 ~~~~~~~
 
-React's `useState` hook takes an *initial state* as an argument. We'll use an empty string, and the function will return an array with two values. The first value (`searchTerm`) represents the *current state*; the second value is a *function to update this state* (`setSearchTerm`). I will sometimes refer to this function as *state updater function*.
+리액트의 `useState` 훅은 인수로 *초기 상태*를 사용합니다. 인수에 빈 문자열을 사용하고 함수는 두 개의 값이 있는 배열을 반환합니다. 첫 번째 값(`searchTerm`)은 *현재 상태*를 나타냅니다. 두 번째 값은 *이 상태를 업데이트하는 함수*(`setSearchTerm`)입니다. 이 함수를 *상태 업데이트 함수*라고 부르기도 합니다.
 
-If you are not familiar with the syntax of the two values from the returned array, consider reading about [JavaScript array destructuring](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Array_destructuring). It is used to read from an array more concisely. This is array destructuring and its benefits visualized in a nutshell:
+반환된 배열에서 두 값을 나타내는 구문에 익숙하지 않다면 [자바스크립트 배열 구조 분해](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Array_destructuring)를 읽어보세요. 배열을 더 간결하게 읽을 수 있습니다. 배열 구조 분해는 간단하게 시각화되는 장점이 있습니다.
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~
@@ -34,7 +34,7 @@ const itemTwo = list[1];
 const [firstItem, secondItem] = list;
 ~~~~~~~
 
-In the case of React, the React `useState` hook is a function which returns an array. Take again the following JavaScript example as comparison:
+리액트의 경우, 리액트 `useState` 훅은 배열을 반환하는 함수입니다. 다음의 자바스크립트 예시를 비교해봅시다.
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~
@@ -50,7 +50,7 @@ const itemTwo = getAlphabet()[1];
 const [firstItem, secondItem] = getAlphabet();
 ~~~~~~~
 
-Array destructuring is just a shorthand version of accessing each item one by one. If you express it without the array destructuring in React, it becomes less readable:
+배열 구조 분해는 각 항목에 하나씩 차례로 접근하는 축약 버전의 방식입니다. 리액트에서 배열 구조 분해를 하지 않고 표현한다면 가독성이 떨어지게 됩니다.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -66,7 +66,7 @@ const App = () => {
 };
 ~~~~~~~
 
-The React team chose array destructuring because of its concise syntax and ability to name destructured variables. The following code snippet is an example of array destructuring:
+리액트는 간결한 구문과 구조 분해된 변수에 이름을 붙일 수 있는 것 때문에 배열 구조 분해를 사용합니다. 다음은 배열 구조 분해의 예시 코드입니다.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -81,7 +81,7 @@ const App = () => {
 };
 ~~~~~~~
 
-After we initialize the state and have access to the current state and the state updater function, use them to display the current state and update it within the App component's event handler:
+상태를 초기화하고 현재 상태와 상태 업데이트 함수에 접근한 후, 이를 이용하여 현재 상태를 표시하고 App 컴포넌트의 이벤트 핸들러 안에서 상태를 업데이트하세요.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -117,11 +117,11 @@ const App = () => {
 };
 ~~~~~~~
 
-When the user types into the input field, the input field's change event is captured by the handler with its current internal value. The handler's logic uses the state updater function to set the new state. After the new state is set in a component, the component renders again, meaning the component function runs again. The new state becomes the current state and can be displayed in the component's JSX.
+사용자가 입력 필드에 입력하면 입력 필드의 이벤트 핸들러가 change 이벤트로 현재 내부 값을 캡처합니다. 핸들러의 로직은 상태 업데이트 함수를 사용하여 새 상태를 설정합니다. 컴포넌트에 새 상태가 설정되면 컴포넌트는 다시 렌더링 되어 컴포넌트 함수가 다시 실행됩니다. 새 상태는 현재 상태가 되고 컴포넌트의 JSX에 표시할 수 있습니다.
 
-### Exercises:
+### 실습하기
 
-* Confirm your [source code for the last section](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/React-State).
-  * Confirm the [changes from the last section](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/React-Props...hs/React-State?expand=1).
-* Read more about [JavaScript array destructuring](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Array_destructuring).
-* Read more about React's useState Hook ([0](https://www.robinwieruch.de/react-usestate-hook), [1](https://reactjs.org/docs/hooks-state.html)), as it makes your React components interactive.
+* [마지막 장의 소스 코드](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/React-State)를 확인하세요.
+  * [마지막 장의 변경 사항](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/React-Props...hs/React-State?expand=1)을 확인하세요.
+* [자바스크립트 배열 구조 분해](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Array_destructuring)에 대해 자세히 알아보세요.
+* 대화형 리액트 컴포넌트를 만드는 리액트의 useState 훅([0](https://www.robinwieruch.de/react-usestate-hook), [1](https://reactjs.org/docs/hooks-state.html))에 대해 자세히 알아보세요.
