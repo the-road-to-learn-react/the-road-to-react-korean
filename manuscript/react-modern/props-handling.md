@@ -1,10 +1,10 @@
-## Props Handling (Advanced)
+## Props 핸들링 (심화)
 
-Props are passed from parent to child down the component tree. Since we use props to transport information from component A to component B frequently, and sometimes via component C, it is useful to know a few tricks to make this more convenient.
+Props는 컴포넌트 트리 안에서 부모로부터 자식에게 전달됩니다. Props를 사용하여 컴포넌트 A에서 컴포넌트 B에게 데이터를 전달하는 경우가 많고, 때로는 컴포넌트 C를 통해 전달하기도 합니다. Props를 더 편리하게 사용할 수 있는 몇 가지 요령에 대해 알아봅시다.
 
-*Note: The following refactorings are recommended for you to learn different JavaScript/React patterns, though you can still build complete React applications without them. Consider this advanced React techniques that will make your source code more concise.*
+*메모: 다음 리팩터링은 다른 자바스크립트/리액트 패턴을 학습하는 데에는 권장하지만, 이러한 과정 없이도 온전한 리액트 애플리케이션을 만들 수 있습니다. 소스 코드를 보다 간결하게 만드는 리액트 고급 테크닉에 대해 고려해보세요.*
 
-React props are a JavaScript object, else we couldn't access `props.list` or `props.onSearch` in React components. Since `props` is an object, we can apply a couple JavaScript tricks to it. For instance, accessing its properties:
+리액트 props는 자바스크립트 객체이므로, 리액트 컴포넌트에서 `props.list` 또는 `props.onSearch` 에 접근할 수 없습니다. `props`가 객체이기 때문에 몇 가지 자바스크립트 트릭을 적용할 수가 있습니다. 그 예로, 객체 프로퍼티에 접근하는 것이 가능합니다.
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~
@@ -13,21 +13,21 @@ const user = {
  lastName: 'Wieruch',
 };
 
-// without object destructuring
+// 구조 분체(object destructing)를 하지 않은 경우
 const firstName = user.firstName;
 const lastName = user.lastName;
 
 console.log(firstName + ' ' + lastName);
 // "Robin Wieruch"
 
-// with object destructuring
+//구조 분체(object destructing)를 한 경우
 const { firstName, lastName } = user;
 
 console.log(firstName + ' ' + lastName);
 // "Robin Wieruch"
 ~~~~~~~
 
-This JavaScript feature is called [object destructuring in JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment). If we need to access multiple properties of an object, using one line of code instead of multiple lines is simpler and more elegant. Let's transfer this knowledge to React props in our Search component:
+이러한 기능을 [자바스크립트에서의 구조 분해](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)라고 합니다. 객체의 여러 속성에 접근해야 하는 경우, 여러 줄 대신 한 줄의 코드를 사용하는 것이 더 간단하고 명료합니다. 이제 Search 컴포넌트의 props에 적용해봅시다.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -52,7 +52,7 @@ const Search = props => {
 };
 ~~~~~~~
 
-That's a basic destructuring of the `props` object in a React component, so that its properties can be used in the component without the `props` object. We refactored the Search component's arrow function from concise body into block body to access the properties of `props`. This would happen quite often if we followed this pattern, and it wouldn't make things easier for us. We can take it a step further by destructuring the `props` right away in the function signature, omitting the block body again:
+리액트 컴포넌트에서 `props` 객체를 구조 분해함으로써 `props` 객체 없이 프로퍼티를 사용할 수 있습니다. `props` 의 프로퍼티에 접근하기 위해 Search 컴포넌트의 화살표 함수를 간결한(concise) 바디에서 블록(block) 바디로 리팩터링했습니다. 이러한 패턴을 사용하지 않고, 함수 시그니처에서 `props`를 구조 분해한다면 조금 전에 만든 블록 바디를 걷어낼 수 있습니다.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -73,9 +73,7 @@ const Search = ({ search, onSearch }) => (
 );
 ~~~~~~~
 
-React's `props` are rarely used in components by themselves; rather, all the information that comes with the `props` object used as a container that's actually used in the component. By destructuring the `props` object right away in the function signature, we can conveniently access all information without dealing with its container.
-
-Let's check out another scenario where its less about the `props` object, and more about an object that comes from it. The same lesson is applicable for the `props` object. First, we will extract a new Item component from the List component:
+리액트 컴포넌트 안에서 `props`를 그 자체로 사용하는 경우는 드뭅니다. `props` 객체에 담긴 모든 정보는 컨테이너로 사용되며, 이것이 실제로 컴포넌트에서 사용하는 방법입니다. `props` 객체를 함수 시그니처에서 구조 분해함으로써, 컨테이너 안에서 모든 정보를 처리하지 않고 필요한 정보만 편하게 가져올 수 있습니다.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -98,11 +96,11 @@ const Item = ({ item }) => (
 # leanpub-end-insert
 ~~~~~~~
 
-We applied previous lesson by destructuring the `props` object in the function signature of each component. The incoming `item` of the Item component could be seen the same as the `props`, because it's never directly used in the Item component. There are three potential ways to handle this problem. The first is to perform a *nested destructuring* in the component's function signature:
+앞서, 각 컴포넌트의 함수 시그니처에서 `props` 객체를 구조 분해했습니다. Item 컴포넌트에 들어오는 `item` 은 `props`로 보일 수도 있을 겁니다. Item 컴포넌트 안에서 직접 사용하지 않았으니까요. 이러한 문제를 해결하기 위해선 3가지 방법을 사용할 수 있습니다. 첫 번째는 컴포넌트의 함수 시그니처에서 *중첩 구조 분해(nested destructuring)*를 하는 것입니다.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
-// version 1 (final)
+// 첫 번째 버전 (최종)
 const Item = ({
 # leanpub-start-insert
  item: {
@@ -129,11 +127,11 @@ const Item = ({
 );
 ~~~~~~~
 
-Nested destructuring introduces lots of clutter through indentations in the function signature. While it's not the most readable option, it can be useful in specific scenarios. On to the second way:
+중첩 구조 분해는 함수 시그니처에서 일어나는 들여쓰기 때문에 많은 혼란을 야기합니다. 가장 읽기 어려운 방법이지만, 특정 상황에서는 유용한 방법이 될 수 있습니다. 이제 두 번째 방법으로 이동합니다.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
-// version 2 (I)
+// 두 번째 버전 (1)
 const List = ({ list }) =>
  list.map(item => (
    <Item
@@ -162,7 +160,7 @@ const Item = ({ title, url, author, num_comments, points }) => (
 );
 ~~~~~~~
 
-Even though the Item component's function signature is more concise, the clutter ended up in the List component instead, because every property is passed to the Item component individually. We can improve this technique using [JavaScript's spread operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax):
+Item 컴포넌트의 함수 시그니처는 간결해졌지만, 모든 프로퍼티가 Item 컴포넌트에서 개별적으로 전달이 되었기 때문에 List 컴포넌트가 복잡해지게 됩니다. 이럴 경우 [자바스크립트의 전개 연산자(spread operator)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax)을 통해 개선할 수 있습니다.
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~
@@ -187,11 +185,11 @@ console.log(personWithDetails);
 // }
 ~~~~~~~
 
-Instead of passing each property one at a time via props from List to Item component, we could use JavaScript's spread operator to pass all the object's key/value pairs as attribute/value pairs to the JSX element:
+Props를 통해 List에서 Item 컴포넌트로 프로퍼티를 하나씩 전달하는 대신에, 자바스크립트의 전개 연산자를 사용하여 모든 객체의 키/값의 쌍을 속성/값의 쌍으로 JSX 엘레먼트에 전달할 수 있습니다.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
-// version 2 (II)
+// 두 번째 버전 (2)
 const List = ({ list }) =>
 # leanpub-start-insert
  list.map(item => <Item key={item.objectID} {...item} />);
@@ -202,7 +200,7 @@ const Item = ({ title, url, author, num_comments, points }) => (
 );
 ~~~~~~~
 
-Then, we'll use [JavaScript's rest parameters](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters):
+그런 다음, [자바스크립트의 나머지 파라미터(Rest parameters)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters)를 사용합니다.
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~
@@ -221,13 +219,13 @@ console.log(personWithoutYear);
 // }
 ~~~~~~~
 
-The JavaScript rest operator is the last part of an object destructuring. It shouldn't be mistaken with the spread operator even though it has the same syntax. Usually, the rest operator happens on the right side of an assignment, with the spread operator on the left.
+자바스크립트 나머지 연산자는 객체 구조 분해의 마지막 부분입니다. 전개 연산자와 동일한 연산자를 사용하기 때문에 착각할 수 있습니다. 일반적으로 나머지 연산자는 할당하는 부분의 오른쪽에서 사용하고, 전개 연산자는 왼쪽에서 사용합니다.
 
-Now it can be used in our List component to separate the `objectID` from the item, because the `objectID` is only used as `key` and isn't used (so far) in the Item component. Only the remaining (rest) item gets spread as attribute/value pairs into the Item component (as before):
+이제 List 컴포넌트에서 item과 `objectID`를 구분하여 사용할 수 있습니다. `objectID`는 `key`로만 사용될 뿐, Item 컴포넌트 안에서 사용되는 값이 아니기 때문입니다. 나머지 item만 이전처럼 속성/값의 쌍으로 Item 컴포넌트에 확장됩니다.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
-// version 2 (III/final)
+// 두 번째 버전 (3/최종)
 const List = ({ list }) =>
 # leanpub-start-insert
  list.map(({ objectID, ...item }) => (
@@ -236,11 +234,11 @@ const List = ({ list }) =>
  ));
 ~~~~~~~
 
-While this version is very concise, it comes with  advanced JavaScript features that may be unknown to some. The third way of handling this situation is to keep it the same as before:
+이 버전은 매우 간결하지만, 일부는 이해하기 어려운 고급 자바스크립트 문법을 사용합니다. 이런 문제를 해결하는 세 번째 방법은 이전과 동일한 형태를 유지하는 것입니다.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
-// version 3 (final)
+// 세 번째 버전 (최종)
 const List = ({ list }) =>
  list.map(item => <Item key={item.objectID} item={item} />);
 
@@ -256,17 +254,17 @@ const Item = ({ item }) => (
 );
 ~~~~~~~
 
-In my opinion, this is the best technique to use when working with other people on a React project. It's not as concise as version 2, but it's more readable, gives the Item component a smaller API surface, and doesn't add too many advanced JavaScript features (spread operator, rest operator).
+개인적으로는, 이 방법이 여러 사람들과 리액트 프로젝트에서 협업하기에 가장 좋다고 생각합니다. 두 번째 버전만큼 간결하지는 않지만, 더 읽기 쉽고 Item 컴포넌트에 노출되는 API 영역도 줄일 수 있습니다. 무엇보다 자바스크립트의 기능(전개 연산자, 나머지 연산자)을 과하게 쓰지 않아도 됩니다.
 
-All these versions have their pros and cons. When refactoring a component, always aim for readability, especially when working in a team of people, and make sure make sure they're using a common React code style.
+위 세 가지 버전에는 모두 장단점이 있습니다. 컴포넌트를 리팩터링 할 때는, 항상 가독성을 신경쓰세요. 특히 여러 사람들로 구성된 팀에서 작업을 할 때는, 공통적으로 사용하는 리액트 코드 스타일을 잊지 마세요.
 
-### Exercises:
+### 읽어보기
 
-* Confirm your [source code for the last section](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/Props-Handling).
- * Confirm the [changes from the last section](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/React-Controlled-Components...hs/Props-Handling?expand=1).
-* Read more about [JavaScript's destructuring assignment](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment).
-* Think about the difference between  JavaScript array destructuring -- which we used for React's `useState` hook -- and object destructuring.
-* Read more about [JavaScript's spread operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax).
-* Read more about [JavaScript's rest parameters](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters).
-* Get a good sense about JavaScript (e.g. spread operator, rest parameters, destructuring) and what's related to React (e.g. props) from the last lessons.
-* Continue to use your favorite way to handle React's props. If you're still undecided, consider the version used in the previous section.
+* [지난 장에서 사용한 코드](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/Props-Handling)를 확인하세요.
+ * [지난 장에서 수정된 코드](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/React-Controlled-Components...hs/Props-Handling?expand=1)를 확인하세요.
+* [자바스크립트의 구조 분해 할당](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)에 대해 읽어보세요.
+* 리액트의 `useState` 훅에서 사용한 자바스크립트 배열 구조 분해와 객체 구조 분해의 차이에 대해 생각해보세요.
+* [자바스크립트의 전개 연산자](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax)에 대해 읽어보세요.
+* [자바스크립트의 나머지 파라미터](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters)에 대해 읽어보세요.
+* 자바스크립트를 더 잘 이해할 수 있는 부분(전개 연산자, 나머지 파라미터, 구조 분해)들에 대해 알아보고 어떤 것들이 리액트(예: props)와 연관되어있는지 생각해보세요.
+* React의 props를 핸들링하는 나만의 방법을 찾아보세요. 아직 결정하지 못했다면 이전 장에서 사용한 버전에 대해서도 생각해보세요.
