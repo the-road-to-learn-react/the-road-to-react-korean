@@ -75,7 +75,7 @@ UI -> Side-Effect -> State -> UI -> ...
 
 ### 실습하기
 
-* [마지막 장의 소스 코드를 확인하세요.](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/React-Controlled-Components)
- * [마지막 장의 변경 사항을 확인하세요.](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/Lifting-State-in-React...hs/React-Controlled-Components?expand=1)
+* [마지막 장의 소스 코드](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/React-Controlled-Components)를 확인하세요.
+ * [마지막 장의 변경 사항](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/Lifting-State-in-React...hs/React-Controlled-Components?expand=1)을 확인하세요.
 * [리액트 컴포넌트 제어 방법](https://www.robinwieruch.de/react-controlled-components/)에 대해 자세히 알아보세요.
 * 리액트 컴포넌트에서 `console.log()`를 사용하여 입력 필드가 변경 될 때마다 변경 사항이 어떻게 렌더링되는지 확인하세요.
