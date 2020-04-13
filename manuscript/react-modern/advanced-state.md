@@ -147,7 +147,7 @@ const storiesReducer = (state, action) => {
 ### 실습하기
 
 
-* [마지막 장의 소스 코드를 확인하세요](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/React-Advanced-State).
-  * [마지막 장의 변경 사항을 확인하세요](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/React-Conditional-Rendering...hs/React-Advanced-State?expand=1).
+* [마지막 장의 소스 코드](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/React-Advanced-State)를 확인하세요..
+  * [마지막 장의 변경 사항](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/React-Conditional-Rendering...hs/React-Advanced-State?expand=1)을 확인하세요.
 * [자바스크립트 Reducer](https://www.robinwieruch.de/javascript-reducer)에 대해 자세히 알아보세요.
 * 리액트 Reducer와 useReducer ([0](https://www.robinwieruch.de/react-usereducer-hook), [1](https://reactjs.org/docs/hooks-reference.html#usereducer))에 대해 자세히 알아보세요.
