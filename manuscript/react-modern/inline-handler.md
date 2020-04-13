@@ -134,7 +134,7 @@ const Item = ({ item, onRemoveItem }) => {
 };
 ~~~~~~~
 
-이러한 변경사항은 함수 컴포넌트에서 핸들러의 수가 많아질수록 소스 코드의 가독성을 떨어트립니다. 가끔 함수 컴포넌트에 존재하는 화살표 함수 핸들러를 다시 일반적인 함수 선언문으로 리팩토링할 때도 있습니다. 단지 컴포넌트를 더욱 확장 가능하게 만들기 위해서 말이죠.
+이러한 변경사항은 함수 컴포넌트에서 핸들러의 수가 많아질수록 소스 코드의 가독성을 떨어트립니다. 가끔 함수 컴포넌트에 존재하는 화살표 함수 핸들러를 다시 일반적인 함수 선언문으로 리팩터링할 때도 있습니다. 단지 컴포넌트를 더욱 확장 가능하게 만들기 위해서 말이죠.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -197,7 +197,7 @@ const Item = ({ item, onRemoveItem }) => (
 );
 ~~~~~~~
 
-이 방법은 신속한 해결방안입니다. 가끔 함수 시그니처와 반환(return)문 사이에 놓인 적절한 핸들러를 정의하기 위해 함수 컴포넌트의 간결한 함수 본문을 다시 함수 블록으로 리팩토링하는 것을 원치 않기 때문입니다. 이 방법은 다른 방법보다 더 간결하지만, 자바스크립트의 로직이 JSX 안에 감춰질 수 있기 때문에 디버깅하기가 더 어려울 수 있습니다. 만약 래핑한 화살표 함수가 여러 줄의 구현 로직을 캡슐화한다면 간결한 본문 대신 함수 블록을 사용해 더욱 장황하게 코드를 작성해야 할 수도 있습니다. 이러한 상황은 지양해야 합니다.
+이 방법은 신속한 해결방안입니다. 가끔 함수 시그니처와 반환(return)문 사이에 놓인 적절한 핸들러를 정의하기 위해 함수 컴포넌트의 간결한 함수 본문을 다시 함수 블록으로 리팩터링하는 것을 원치 않기 때문입니다. 이 방법은 다른 방법보다 더 간결하지만, 자바스크립트의 로직이 JSX 안에 감춰질 수 있기 때문에 디버깅하기가 더 어려울 수 있습니다. 만약 래핑한 화살표 함수가 여러 줄의 구현 로직을 캡슐화한다면 간결한 본문 대신 함수 블록을 사용해 더욱 장황하게 코드를 작성해야 할 수도 있습니다. 이러한 상황은 지양해야 합니다.
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~
@@ -226,6 +226,6 @@ const Item = ({ item, onRemoveItem }) => (
 
 ### 실습하기
 
-* [[코드샌드박스] 이전 절의 소스 코드](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/Inline-Handler-in-JSX)를 읽어보세요.
-  * [[깃허브] 이전 절의 소스 코드](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/Imperative-React...hs/Inline-Handler-in-JSX?expand=1)를 확인하세요.
+* [[코드샌드박스] 지난 절의 소스 코드](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/Inline-Handler-in-JSX)를 읽어보세요.
+  * [[깃허브] 지난 절의 변경 사항](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/Imperative-React...hs/Inline-Handler-in-JSX?expand=1)을 확인하세요.
 * 핸들러, 콜백 핸들러, 인라인 핸들러에 관한 내용을 복습하세요.
