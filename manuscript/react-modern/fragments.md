@@ -1,6 +1,6 @@
-## React Fragments
+## 리액트 Fragments
 
-One caveat with JSX, especially when we create a dedicated Search component, is that we must introduce a wrapping HTML element to render it:
+JSX에서, 특히 Search 컴포넌트를 만들 때 한 가지 주의할 것이 있습니다. 렌더링하기 위해 HTML을 감싸는 요소를 만들어야 한다는 것입니다.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -21,7 +21,7 @@ const Search = ({ search, onSearch }) => (
 );
 ~~~~~~~
 
-Normally the JSX returned by a React component needs only one wrapping top-level element. To render multiple top-level elements side-by-side, we have to wrap them into an array instead. Since we're working with a list of elements, we have to give every sibling element React's `key` attribute:
+보통 리액트 컴포넌트가 반환하는 JSX에는 다른 요소를 감싸는 단 하나의 최상위 요소만 있어야 합니다. 여러 최상위 요소를 나란히 렌더링하려면 대신 배열에 담아야 합니다. 요소의 리스트를 다룰 때는 모든 형제 요소에 리액트의 `key` 속성을 지정해야 합니다.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -39,7 +39,7 @@ const Search = ({ search, onSearch }) => [
 ];
 ~~~~~~~
 
-This is one way to have multiple top-level elements in your JSX. It doesn't turn out very readable, though, as it becomes verbose with the additional key attribute. Another solution is to use a **React fragment**:
+이는 JSX에서 여러 최상위 요소를 담는 방법의 하나입니다. 추가적인 key 속성으로 코드가 장황해져서 읽기가 쉽지 않습니다. 또 다른 방법은 **리액트 fragment**를 사용하는 것입니다.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -60,10 +60,10 @@ const Search = ({ search, onSearch }) => (
 );
 ~~~~~~~
 
-A fragment wraps other elements into a single top-level element without adding to the rendered output. Both Search elements should be visible in your browser now, with input field and label. So if you prefer to omit the wrapping `<div>` or `<span>` elements, substitute them with an empty tag that is allowed in JSX, and doesn't introduce intermediate elements in our rendered HTML.
+fragment는 추가적인 요소를 렌더링하지 않으면서 다른 요소를 하나의 최상위 요소로 감쌉니다. 이제 브라우저에 입력 필드와 라벨이 있는 두 검색 요소가 표시됩니다. `<div>` 또는 `<span>` 같은 감싸는 요소를 생략하고 싶다면 JSX에서 허용하는 빈 태그로 대체하여 중간 요소 없이 HTML을 렌더링할 수 있습니다.
 
-### Exercises:
+### 실습하기
 
-* Confirm your [source code for the last section](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/React-Fragments).
- * Confirm the [changes from the last section](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/React-Custom-Hooks...hs/React-Fragments?expand=1).
-* Read more about [React fragments](https://reactjs.org/docs/fragments.html).
+* [마지막 장의 소스 코드](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/React-Fragments)를 확인하세요.
+ * [마지막 장의 변경 사항](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/React-Custom-Hooks...hs/React-Fragments?expand=1)을 확인하세요.
+* [리액트 fragments](https://reactjs.org/docs/fragments.html)에 대해 자세히 알아보세요.

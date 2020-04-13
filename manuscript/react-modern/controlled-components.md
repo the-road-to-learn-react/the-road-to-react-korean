@@ -1,8 +1,8 @@
-## React Controlled Components
+## 리액트 컴포넌트 제어
 
-**Controlled components** are not necessary React components, but HTML elements. Here, we'll learn how to turn the Search component and its input field into a controlled component.
+**제어 가능한 컴포넌트**는 리액트 컴포넌트가 아닌 HTML 엘리먼트입니다. 이 장에서 검색 컴포넌트와 입력 필드를 제어하는 방법에 대해 알아 보겠습니다.
 
-Let's go through a scenario that shows  why we should follow the concept of controlled components throughout our React application. After applying the following change -- giving the `searchTerm` an initial state -- can you spot the mistake in your browser?
+`searchTerm`의 상태값을 브라우저상에서 확인 할 수 있습니까?
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -17,9 +17,9 @@ const App = () => {
 };
 ~~~~~~~
 
-While the list has been filtered according to the initial search, the input field doesn't show the initial `searchTerm`. We want the input field to reflect the actual `searchTerm` used from the initial state; but it's only reflected through the filtered list.
+초기 상태에 따라 목록이 필터링 되었지만 입력 필드에 초기 `searchTerm`가 표시되지 않습니다. 입력 필드가 초기 상태에 따라 실제 `searchTerm`에 반영되어야 합니다. 하지만 이곳에서는 필터링 된 목록에만 반영됩니다.
 
-We need to convert the Search component with its input field into a controlled component. So far, the input field doesn't know anything about the `searchTerm`. It only uses the change event to inform us of a change. Actually, the input field has a `value` attribute.
+입력 필드가 있는 검색 컴포넌트를 제어 가능한 컴포넌트로 변환해야합니다. 현재까지는 입력 필드가 `searchTerm`에 대해 아무것도 모릅니다. 변경 사항을 알려주기 위해서 이벤트 변경을 사용합니다. 입력 필드에 `value(값)` 속성이 있는 것을 확인 하세요.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -58,24 +58,24 @@ const Search = props => (
 );
 ~~~~~~~
 
-Now the input field starts with the correct initial value, using the `searchTerm` from the React state. Also, when we change the `searchTerm`, we force the input field to use the value from React's state (via props). Before, the input field managed its own internal state natively with just HTML.
+이제 입력 필드는 `searchTerm`을 사용하여 리액트의 상태 초기 값을 보여줍니다. 또한 `searchTerm`을 변경할 때 입력 필드가 리액트의 상태 값 (props를 통한)을 사용하도록합니다. 이전에는 입력 필드가 HTML만으로 자체 내부 상태를 관리했습니다.
 
-We learned about controlled components in this section, and, taking all the previous sections as learning steps into consideration, discovered another concept called **unidirectional data flow**:
+이 장에서는 컴포넌트의 제어 방법에 대해 배웠고 이전 장까지는 **단방향 데이터 흐름(unidirectional data flow)** 에 대해 배웠습니다.
 
 {title="Visualization",lang="javascript"}
 ~~~~~~~
 UI -> Side-Effect -> State -> UI -> ...
 ~~~~~~~
 
-A React application and its components start with an initial state, which may be passed down as props to other components. It's rendered for the first time as a UI. Once a side-effect occurs, like user input or data loading from a remote API, the change is captured in React's state. Once state has been changed, all the components affected by the modified state or the implicitly modified props are re-rendered (the component functions runs again).
+리액트 애플리케이션 및 해당 컴포넌트는 초기 상태로 시작하며 다른 컴포넌트에 props로 전달될 수 있습니다. UI로 처음 렌더링 됩니다. API에서 사용자 입력 또는 데이터로드와 같은 현상이 발생하면 변경 사항이 리액트의 상태로 감지됩니다. 상태가 변경되면 수정된 상태 또는 수정된 props의 영향을 받는 모든 컴포넌트가 다시 렌더링 됩니다 (컴포넌트 함수가 다시 실행됩니다).
 
-In the previous sections, we also learned about React's **component lifecycle**. At first, all components are instantiated from the top to the bottom of the component hierarchy. This includes all hooks (e.g. `useState`) that are instantiated with their initial values (e.g. initial state). From there, the UI awaits side-effects like user interactions. Once state is changed (e.g. current state changed via state updater function from `useState`), all components affected by modified state/props render again.
+이전 장에서는 리액트의 **컴포넌트 라이프사이클(component lifecycle)** 에 대해서도 배웠습니다. 처음에는 모든 컴포넌트가 컴포넌트 계층의 맨 위에서 맨 아래로 인스턴스화됩니다. 여기에는 초기 값 (예 : 초기 상태)으로 인스턴스화 된 모든 훅 (예 : `useState`)이 포함됩니다. 거기에서 UI는 사용자 상호 작용과 같은 사이트 이펙트를 기다립니다. 상태가 변경되면 (예 : `useState`에서 상태 업데이터 기능을 통해 현재 상태가 변경됨) 수정 된 state/props의 영향을 받는 모든 구성 요소가 다시 렌더링됩니다.
 
-Every run through a component's function takes the *recent value* (e.g. current state) from the hooks and *doesn't* reinitialize them again (e.g. initial state). This might seem odd, as one could assume the `useState` hooks function re-initializes again with its initial value, but it doesn't. Hooks initialize only once when the component renders for the first time, after which React tracks them internally with their most recent values.
+컴포넌트 함수를 실행할 때마다 훅에서 *최신 값* (예 : 현재 상태)을 취하고 다시 초기화하지 않습니다 (예 : 초기 상태). `useState` 훅 함수가 초기 값으로 다시 초기화된다고 가정 할 수 있기 때문에 이상하게 보일 수 있지만 그렇지 않습니다. 컴포넌트가 처음 렌더링 될 때 훅이 한 번 초기화 된 후, 리액트가 가장 최신 상태 값을 감지합니다.
 
-### Exercises:
+### 실습하기
 
-* Confirm your [source code for the last section](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/React-Controlled-Components).
- * Confirm the [changes from the last section](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/Lifting-State-in-React...hs/React-Controlled-Components?expand=1).
-* Read more about [controlled components in React](https://www.robinwieruch.de/react-controlled-components/).
-* Experiment with `console.log()` in your React components and observe how your changes render, both initially and after the input field changes.
+* [마지막 장의 소스 코드](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/React-Controlled-Components)를 확인하세요.
+ * [마지막 장의 변경 사항](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/Lifting-State-in-React...hs/React-Controlled-Components?expand=1)을 확인하세요.
+* [리액트 컴포넌트 제어 방법](https://www.robinwieruch.de/react-controlled-components/)에 대해 자세히 알아보세요.
+* 리액트 컴포넌트에서 `console.log()`를 사용하여 입력 필드가 변경 될 때마다 변경 사항이 어떻게 렌더링되는지 확인하세요.
