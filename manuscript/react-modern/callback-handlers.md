@@ -1,6 +1,6 @@
-## Callback Handlers in JSX
+## JSX의 콜백 핸들러
 
-Next we'll focus on the input field and label, by separating a standalone Search component and creating an instance of it in the App component. Through this process, the Search component becomes a sibling of the List component, and vice versa. We'll also move the handler and the state into the Search component to keep our functionality intact.
+이제 Search 컴포넌트를 독립적으로 분리하고 App 컴포넌트에 해당 인스턴스를 만들어 인풋 필드와 라벨을 살펴보겠습니다. 이 과정을 통해 Search 컴포넌트는 List 컴포넌트는 서로 형제 컴포넌트가 됩니다. 또한 핸들러와 상태를 Search 컴포넌트로 옮겨서 기능을 그대로 유지해보겠습니다.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -44,9 +44,9 @@ const Search = () => {
 # leanpub-end-insert
 ~~~~~~~
 
-We have an extracted Search component that handles state and shows state without revealing its content. The component displays the `searchTerm` as text but doesn't share this information with its parent or sibling components yet. Since Search component does nothing except show the search term, it becomes useless for the other components.
+추출된 Search 컴포넌트는 상태를 다루면서 내용을 표시하지 않고 상태를 보여줍니다. 컴포넌트는 `searchTerm`을 텍스트로 표시하지만, 아직 이 정보를 부모나 형제 컴포넌트와 공유하지는 않습니다. Search 컴포넌트는 검색어를 보여주는 것 외에 아무것도 실행하지 않기 때문에 다른 컴포넌트에는 사용할 수 없습니다.
 
-There is no way to pass information as JavaScript data types up the component tree, since props are naturally only passed downwards. However, we can introduce a **callback handler** as a function: A callback function gets introduced (A), is used elsewhere (B), but "calls back" to the place it was introduced (C).
+props는 자연스럽게 아래 방향으로만 전달되므로 자바스크립트 데이터 타입으로서 정보를 컴포넌트 구조에 전달할 방법은 없습니다. 그러나 함수로 **콜백 핸들러**를 사용할 수 있습니다. 선언한 콜백 함수는(A) 다른 곳에서 사용되지만(B) 도입된 위치에서 "다시 호출"됩니다(C).
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -94,10 +94,10 @@ const Search = props => {
 };
 ~~~~~~~
 
-Use comments in your source code to omit A, B, and C, as these are reminders which task each block of code is to perform. Consider the concept of the callback handler: We pass a function from one component (App) to another component (Search); we use it in the second component (Search); but use the actual callback of the function call in the first component (App). This way, we can communicate up the component tree. A handler function used in one component becomes a callback handler, which is passed down to components via React props. React props are always passed down as information the component tree, and callback handlers passed as functions in props can be used to communicate up the component hierarchy.
+각 코드 블록이 실행하는 작업을 알려주므로 소스 코드에서 주석으로 A, B와 C를 생략하세요. 콜백 핸들러의 개념을 생각해봅시다. 한 컴포넌트(App)에서 다른 컴포넌트(Search)로 함수를 전달하고 두 번째 컴포넌트(Search)에서 그 함수를 사용합니다. 그러나 첫 번째 컴포넌트(App)에서 함수 호출의 실제 콜백을 이용합니다. 이렇게 하면 컴포넌트 구조를 통해 소통할 수 있습니다. 한 컴포넌트에서 사용된 핸들러 함수는 콜백 핸들러가 되어 리액트 props를 통해 컴포넌트로 전해져 내려옵니다. 리액트 props는 항상 컴포넌트 구조를 따라 정보로 전달되며, props에서 함수로 전달된 콜백 핸들러는 컴포넌트 계층을 따라 통신할 때 사용할 수 있습니다.
 
-### Exercises:
+### 실습하기
 
-* Confirm your [source code for the last section](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/Callback-Handler-in-JSX).
-  * Confirm the [changes from the last section](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/React-State...hs/Callback-Handler-in-JSX?expand=1).
-* Revisit the concepts of handler and callback handler as many times as you need.
+* [마지막 장의 소스 코드](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/Callback-Handler-in-JSX)를 확인하세요.
+  * [마지막 장의 변경 사항](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/React-State...hs/Callback-Handler-in-JSX?expand=1)을 확인하세요.
+* 필요한 만큼 핸들러와 콜백 핸들러의 개념을 다시 살펴보세요.
