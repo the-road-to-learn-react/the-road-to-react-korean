@@ -1,6 +1,6 @@
-## Handler Function in JSX
+## JSX의 핸들러 함수
 
-The App component still has the input field and label, which we haven't used. In HTML outside of JSX, input fields have an [onchange handler](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onchange). We're going to discover how to use onchange handlers with a React component's JSX. First, refactor the App component form a concise to block body so we can add implementation details.
+App 컴포넌트에는 사용하지 않은 입력 필드와 라벨이 그대로 있습니다. JSX 외부의 HTML에서 입력 필드에는 [onchange 핸들러](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onchange)가 있습니다. 리액트 컴포넌트의 JSX와 함께 onchange 핸들러 사용 방법을 알아보겠습니다. 먼저 App 컴포넌트 본문을 간결하게 만들고 세부 구현 사항을 추가합니다.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -26,7 +26,7 @@ const App = () => {
 # leanpub-end-insert
 ~~~~~~~
 
-Next, define a function -- which can be normal or arrow -- for the change event of the input field. In React, this function is called an **(event) handler**. Now the function can be passed to the `onChange` attribute (JSX named attribute) of the input field.
+그다음 입력 필드의 change 이벤트에 대한 함수를 정의하세요. 일반 함수나 화살표 함수를 사용할 수 있습니다. 리액트에서 이 함수를 **(이벤트) 핸들러**라고 합니다. 이제 함수는 입력 필드의 `onChange` 속성(지정된 JSX 속성)으로 전달됩니다.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -54,7 +54,7 @@ const App = () => {
 };
 ~~~~~~~
 
-After opening your application in a web browser, open the browser's developer tools to see logging occur after you type into the input field. This is called a **synthetic event** defined by a JavaScript object. Through this object, we can access the emitted value of the input field:
+웹 브라우저에서 애플리케이션을 실행합니다. 브라우저의 개발자 도구를 열고 입력 필드에 입력하여 로그가 발생하는지 확인하세요. 이를 자바스크립트 객체가 정의한 **합성 이벤트(synthetic event)**라고 합니다. 이 객체를 통해 입력 필드가 내보내는 값에 접근할 수 있습니다.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -69,9 +69,9 @@ const App = () => {
 };
 ~~~~~~~
 
-The synthetic event is essentially a wrapper around the [browser's native event](https://developer.mozilla.org/en-US/docs/Web/Events), with more functions that are useful to prevent native browser behavior (e.g. refreshing a page after the user clicks a form's submit button). Sometimes you will use the event, sometimes you won't need it.
+합성 이벤트는 기본적으로 [브라우저의 기본 이벤트](https://developer.mozilla.org/en-US/docs/Web/Events)를 감싸는 형태이며, 기본 브라우저 동작(예: 사용자가 폼 전송 버튼을 클릭한 후의 페이지 새로고침)을 막는 유용한 기능이 더 많이 있습니다. 어떤 때는 이벤트를 사용하기도 하고 어떤 때는 필요하지 않을 때도 있습니다.
 
-This is how we give HTML elements in JSX handler functions to respond to user interaction. Always pass functions to these handlers, not the return value of the function, except when the return value is a function:
+다음은 사용자 상호작용에 응답하기 위해 JSX 핸들러 함수에 HTML 요소를 전달하는 방법입니다. 반환 값이 함수일 때를 제외하고는 항상 이런 핸들러에 함수의 반환 값이 아니라 함수를 전달하세요.
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~
@@ -94,12 +94,12 @@ This is how we give HTML elements in JSX handler functions to respond to user in
 />
 ~~~~~~~
 
-HTML and JavaScript work well together in JSX. JavaScript in HTML can display objects, can pass JavaScript primitives to HTML attributes (e.g. `href` to `<a>`), and can pass functions to an element's attributes for handling events.
+HTML과 자바스크립트는 JSX에서 잘 동작합니다. HTML의 자바스크립트는 객체를 표시하고 HTML 속성에 자바스크립트 원시 타입을 전달할 수 있습니다((예: `<a>`에 `href`). 그리고 이벤트 처리를 위해 요소의 속성에 함수를 전달할 수 있습니다.
 
-I prefer using arrow functions because of their concision as event handlers, however, in a larger React component I see myself using the function statements too, because it gives them more visibility in contrast to other variable declarations within a component's body.
+이벤트 핸들러로서 간결한 화살표 함수 사용을 선호하지만, 더 큰 리액트 컴포넌트에서는 컴포넌트 본문 안에 있는 다른 변수 선언과 비교하여 더 명확하게 보이기 때문에 함수 선언문을 사용하기도 합니다.
 
-### Exercises:
+### 실습하기
 
-* Confirm your [source code for the last section](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/Handler-Function-in-JSX).
-  * Confirm the [changes from the last section](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/React-Component-Definition...hs/Handler-Function-in-JSX?expand=1).
-* Read more about [React's events](https://reactjs.org/docs/events.html).
+* [마지막 장의 소스 코드](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/Handler-Function-in-JSX)를 확인하세요.
+  * [마지막 장의 변경 사항](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/React-Component-Definition...hs/Handler-Function-in-JSX?expand=1)를 확인하세요.
+* [리액트의 이벤트](https://reactjs.org/docs/events.html)에 대해 자세히 알아보세요.
