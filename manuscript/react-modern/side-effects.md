@@ -60,8 +60,6 @@ useEffect 훅은 두 가지 인수를 받습니다. 첫 번째 인수는 사이�
 
 useEffect의 종속성 배열이 빈 배열이면, 사이드 이펙트를 포함하는 함수는 컴포넌트가 첫 렌더링될 때 단 한 번만 불립니다. 이렇게 훅으로 리액트 컴포넌트 생명주기에 동참할 수 있습니다. 훅은 컴포넌트가 처음으로 마운트될 때 뿐만 아니라 종속성 중 하나가 업데이트 될 때 유발될 수 있습니다.
 
-Using React `useEffect` instead of managing the side-effect in the handler has made the application more robust. *Whenever* and *wherever* `searchTerm` is updated via `setSearchTerm`, local storage will always be in sync with it.
-
 핸들러 함수에서 사이드 이펙트를 관리하는 대신 `useEffect`를 사용하여 애플리케이션을 더 탄탄하게 만들었습니다. **언제 어디서나** `searchTerm`은 `setSearchTerm`을 통해 업데이트 되고, 로컬 저장소는 항상 그것과 동기화되어 있을 것입니다.
 
 ### 읽어보기
