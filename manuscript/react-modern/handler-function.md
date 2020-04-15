@@ -6,7 +6,7 @@ App 컴포넌트에는 사용하지 않은 입력 필드와 라벨이 그대로 
 ~~~~~~~
 # leanpub-start-insert
 const App = () => {
-  // do something in between
+  // 여기에 코드를 작성하세요
 
   return (
 # leanpub-end-insert
@@ -75,7 +75,7 @@ const App = () => {
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~
-// don't do this
+// 이렇게 하지 마세요
 <input
   id="search"
   type="text"
@@ -84,7 +84,7 @@ const App = () => {
 # leanpub-end-insert
 />
 
-// do this instead
+// 대신 이렇게 하세요
 <input
   id="search"
   type="text"
