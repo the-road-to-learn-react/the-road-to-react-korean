@@ -1,8 +1,8 @@
-## React Props
+## 리액트 Props
 
-We are currently using the `list` variable as a global variable in the current application. We used it directly from the global scope in the App component, and again in the List component. This could work if you only had one variable, but it doesn't scale with multiple variables across multiple components from many different files.
+우리는 현재 `list` 변수를 애플리케이션의 전역 변수로 사용하고 있습니다. 변수를 App 컴포넌트의 전역 스코프에서 직접 사용하고, List 컴포넌트에서도 똑같이 사용했습니다. 이는 변수를 한 개만 사용한다면 문제가 되지 않지만, 여러 개의 변수를 여러 컴포넌트에서 사용할 때는 효율적이지 못한 방법입니다.
 
-Using so called props, we can pass variables as information from one component to another component. Before using props, we'll move the list from the global scope into the App component and rename it to its actual domain:
+Props를 사용하면 변수에 저장된 데이터를 한 컴포넌트에서 다른 컴포넌트로 전달할 수 있습니다. Props를 사용하기에 앞서, 전역 스코프에 선언한 list를 App 컴포넌트 안에서 호출하고, 필요한 기능에 맞게 이름을 바꿀 것입니다.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -34,7 +34,7 @@ const App = () => {
 };
 ~~~~~~~
 
-Next, we'll use **React props** to pass the array to the List component:
+이제 **리액트 props**를 사용하여 배열을 List 컴포넌트에 전달해봅시다.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -60,7 +60,7 @@ const App = () => {
 };
 ~~~~~~~
 
-The variable is called `stories` in the App component, and we pass it under this name to the List component. In the List component's instantiation, however, it is assigned to the `list` attribute. We access it as `list` from the `props` object in the List component's function signature:
+App 컴포넌트에 변수 `stories`를 생성하고, 이 이름으로 List 컴포넌트에 전달하겠습니다. 그러나 이 props는 List 컴포넌트가 인스턴스화될 때 `list` 속성으로 할당됩니다. List 컴포넌트의 함수 시그니처(function signature)를 통해 `props ` 객체는 `list`으로 접근하게 됩니다.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -79,8 +79,10 @@ const List = props =>
   ));
 ~~~~~~~
 
-Using this operation, we've prevented the list/stories variable from polluting the global scope in the App component. Since `stories` is not used in the App component directly, but in one of its child components, we passed them as props to the List component. There, we can access it through the first function signature's argument, called `props`.
+이 작업을 통해 list/stories 변수가 App 컴포넌트에서 다른 값으로 대체되는 것을 방지했습니다. `stories` 는 App 컴포넌트에서 직접 사용되지는 않지만, App의 자식 컴포넌트인 List 컴포넌트에서는 사용되기 때문에 props로 전달했습니다. 이제 첫 번째 함수 시그니쳐의 인수인 `props` 를 통해 stories에 접근할 수 있게 되었습니다.
 
-* Confirm your [source code for the last section](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/React-Props).
-  * Confirm the [changes from the last section](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/Handler-Function-in-JSX...hs/React-Props?expand=1).
-* Read more about [how to pass props to React components](https://www.robinwieruch.de/react-pass-props-to-component).
+
+
+* [지난 장에서 사용한 소스코드](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/React-Props)를 확인하세요.
+  * [지난 장에서 수정된 코드](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/Handler-Function-in-JSX...hs/React-Props?expand=1)도 확인하세요..
+* [리액트 컴포넌트에 props를 전달하는 방법](https://www.robinwieruch.de/react-pass-props-to-component)에 대해서 더 알아보세요.
