@@ -1,6 +1,6 @@
-## React Component Composition
+## 리액트 컴포넌트 구성
 
-Now we'll discover how to use a React element in the same fashion as an HTML element, with an opening and closing tag:
+HTML 엘리먼트와 동일한 방식으로 리액트 안에서 엘리먼트를 사용하는 방법을 알아 봅시다.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -27,7 +27,7 @@ const App = () => {
 };
 ~~~~~~~
 
-Instead of using the `label` prop from before, we inserted the text "Search:" between the component's element's tags. In the InputWithLabel component, you have access to this information via **React's children** prop. Instead of using the`label` prop, use the children`prop to render everything that has been passed down from above where you want it:
+`label`의 prop 을 사용하는 대신 컴포넌트의 엘리먼트 태그 사이에 "Search :"라는 텍스트를 삽입했습니다. InputWithLabel 컴포넌트에서 **리액트의 children** prop를 통해 정보에 접근 할 수 있습니다. `label`의 prop를 사용하는 대신 children prop을 사용하여 원하는 곳에서 전달된 모든 것을 렌더링하십시오.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -55,7 +55,7 @@ const InputWithLabel = ({
 );
 ~~~~~~~
 
-Now the React component's elements behave similar to native HTML. Everything that's passed between a component's elements can be accessed as children`in the component and be rendered somewhere. Sometimes when using a React component, you want to have more freedom from the outside what to render in the inside of a component:
+이제 리액트 컴포넌트의 엘리먼트는 기본 HTML과 유사하게 작동합니다. 컴포넌트의 엘리먼트 사이에 전달되는 모든 것은 컴포넌트의 하위 요소로 접근하여 어딘가에 렌더링 할 수 있습니다. 때때로 리액트 컴포넌트를 사용할 때, 컴포넌트 내부에 렌더링할 항목을 외부로부터 더 자유롭게 만들기를 원합니다.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -82,11 +82,11 @@ const App = () => {
 };
 ~~~~~~~
 
-With this React feature, we can compose React components into each other. We've used it with a JavaScript string and with a string wrapped in an HTML `<strong>` element, but it doesn't end here. You can pass components via React children as well.
+이 리액트 기능으로 리액트 컴포넌트를 서로 구성 할 수 있습니다. 우리는 자바스크립트 문자열과 HTML `<strong>`요소로 싸인 문자열과 함께 사용 했지만 여기서 끝나지 않습니다. 리액트 자식 컴포넌트를 통해 전달할 수도 있습니다.
 
-### Exercises:
+### 실습하기
 
-* Confirm your [source code for the last section](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/React-Component-Composition).
-  * Confirm the [changes from the last section](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/Reusable-React-Component...hs/React-Component-Composition?expand=1).
-* Read more about React Component Composition ([0](https://www.robinwieruch.de/react-component-composition), [1](https://reactjs.org/docs/composition-vs-inheritance.html)).
-* Create a simple text component that renders a string and passes it as `children` to the InputWithLabel component.
+* [마지막 장의 소스 코드](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/React-Component-Composition)를 확인하세요.
+  * [마지막 장의 변경 사항](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/Reusable-React-Component...hs/React-Component-Composition?expand=1)을 확인하세요.
+* 리액트 컴포넌트 구성 ([0](https://www.robinwieruch.de/react-component-composition), [1](https://reactjs.org/docs/composition-vs-inheritance.html))에 대해 자세히 알아보세요.
+* InputWithLabel 컴포넌트에 간단한 문자열을 렌더링하는 `자식(children)`컴포넌트를 만드세요.
