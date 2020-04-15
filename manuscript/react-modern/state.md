@@ -23,14 +23,14 @@ const App = () => {
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~
-// basic array definition
+// 기본 배열 정의
 const list = ['a', 'b'];
 
-// no array destructuring
+// 배열 구조 분해가 아닌 방식
 const itemOne = list[0];
 const itemTwo = list[1];
 
-// array destructuring
+// 배열 구조 분해
 const [firstItem, secondItem] = list;
 ~~~~~~~
 
@@ -42,11 +42,11 @@ function getAlphabet() {
   return ['a', 'b'];
 }
 
-// no array destructuring
+// 배열 구조 분해가 아닌 방식
 const itemOne = getAlphabet()[0];
 const itemTwo = getAlphabet()[1];
 
-// array destructuring
+// 배열 구조 분해
 const [firstItem, secondItem] = getAlphabet();
 ~~~~~~~
 
@@ -57,7 +57,7 @@ const [firstItem, secondItem] = getAlphabet();
 const App = () => {
   const stories = [ ... ];
 
-  // less readable version without array destructuring
+  // 배열 구조 분해를 하지 않아 가독성이 떨어지는 방식
   const searchTermState = React.useState('');
   const searchTerm = searchTermState[0];
   const setSearchTerm = searchTermState[1];
