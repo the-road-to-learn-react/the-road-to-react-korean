@@ -29,7 +29,7 @@ const App = () => {
 
 입력 필드를 사용한 뒤 브라우저의 탭을 새로고침하면 브라우저는 가장 최근의 검색어를 기억해야 합니다. 리액트에서 로컬 저장소를 사용하는 것은 브라우저 API를 이용해 리액트 영역 밖과 상호작용하는 것이기 때문에 사이드 이펙트라고 볼 수 있습니다.
 
-하지만 한 가지 문제가 있습니다. 핸들러 함수는 상태를 업데이트하는데 주력해야 하는데, 이제 사이드 이펙트도 가집니다. `setSearchTem` 함수를 애플리케이션의 다른 위치에서 사용하면 로컬 저장소도 함께 업데이트될지 확신할 수 없기 때문에 구현한 기능을 망가뜨릴 수 있습니다. 사이드 이펙트를 정해진 장소에서 처리하도록 하여 이 문제를 해결해봅시다. **useEffect** 훅을 사용하여 `searchTerm`이 바뀔 때마다 사이드 이펙트를 유발하도록 할 것입니다.
+하지만 한 가지 문제가 있습니다. 핸들러 함수는 상태를 업데이트하는 데 주력해야 하는데, 이제 사이드 이펙트도 가집니다. `setSearchTem` 함수를 애플리케이션의 다른 위치에서 사용하면 로컬 저장소도 함께 업데이트될지 확신할 수 없기 때문에 구현한 기능을 망가뜨릴 수 있습니다. 사이드 이펙트를 정해진 장소에서 처리하도록 하여 이 문제를 해결해봅시다. **useEffect** 훅을 사용하여 `searchTerm`이 바뀔 때마다 사이드 이펙트를 유발하도록 할 것입니다.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -63,7 +63,7 @@ useEffect의 종속성 배열이 빈 배열이면, 사이드 이펙트를 포함
 핸들러 함수에서 사이드 이펙트를 관리하는 대신 `useEffect`를 사용하여 애플리케이션을 더 탄탄하게 만들었습니다. **언제 어디서나** `searchTerm`은 `setSearchTerm`을 통해 업데이트 되고, 로컬 저장소는 항상 그것과 동기화되어 있을 것입니다.
 
 ### 읽어보기
-* useEffect 훅에 대해 더 읽어보세요 ([0](https://reactjs.org/docs/hooks-effect.html), [1](https://reactjs.org/docs/hooks-reference.html#useeffect)).
+* useEffect 훅에 대해 더 읽어보세요. ([0](https://reactjs.org/docs/hooks-effect.html), [1](https://reactjs.org/docs/hooks-reference.html#useeffect))
 
 ### 실습하기
 * [마지막 장의 소스 코드](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/React-Side-Effects)를 확인하세요.
