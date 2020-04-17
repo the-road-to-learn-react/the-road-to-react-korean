@@ -126,7 +126,7 @@ const App = () => {
 
 ### 실습하기
 
-* [지난 장에서 사용한 코드](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/React-Conditional-Rendering)를 확인하세요.
-  * [지난 장에서 수정된 코드](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/React-Asynchronous-Data...hs/React-Conditional-Rendering?expand=1)도 확인하세요.
+* [[코드샌드박스] 지난 장에서 사용한 코드](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/React-Conditional-Rendering)
+  * [[깃허브] 지난 장에서 수정된 코드](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/React-Asynchronous-Data...hs/React-Conditional-Rendering?expand=1)
 * [리액트의 조건부 렌더링](https://www.robinwieruch.de/conditional-rendering-react/)에 대해서 더 읽어보세요.
 
