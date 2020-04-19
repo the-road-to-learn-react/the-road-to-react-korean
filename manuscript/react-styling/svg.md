@@ -1,8 +1,8 @@
 ## SVG 사용
 
-최신 React 애플리케이션을 만들기 위해, SVG를 사용하는 것이 좋습니다. 모든 버튼 개체 텍스트를 만드는 대신, 예를 들면, 여러분들은 아이콘으로 좀 더 가볍게 만들 수 있습니다. 이번에는 리액트 컴포넌트 중 하나인 확장 가능한 그래픽(SVG)을 사용해 보겠습니다. 
+최신 React 애플리케이션을 만들기 위해, SVG를 사용하는 것이 좋습니다. 모든 버튼 개체 텍스트를 만드는 대신, 예를 들면, 여러분들은 아이콘으로 좀 더 가볍게 만들 수 있습니다. 이번에는 리액트 컴포넌트 중 하나인 확장 가능한 그래픽(SVG, scalable vector graphic)을 사용해 보겠습니다. 
 
-이번 장은 SVG 아이콘을 더 멋지고 정확하게 사용할 수 있도록 하는, 이전에 다뤘던 "리액트에서의 CSS"를 기반으로 합니다. SVG는 다른 스타일링 혹은 스타일링이 전혀 없어도 괜찮습니다. 
+이번 장은 SVG 아이콘을 더 멋지고 정확하게 사용할 수 있도록 하는, 이전에 다뤘던 "리액트에서의 CSS"를 기반으로 합니다. 다른 꾸미기 기법이나, 혹은 전혀 꾸미지 않아도 되며, SVG는 꾸미기 없이도 괜찮습니다. 
 
 이 SVG 아이콘은 [플랫아이콘 무료 사이트](https://www.flaticon.com/authors/freepik)에 있습니다. 이 사이트의 많은 SVG는 원작자를 남기면 무료로 사용할 수 있습니다. (https://www.flaticon.com/free-icon/check_109748) 여기서 SVG로 아이콘을 다운로드 할 수 있으며 프로젝트 *src/check.svg* 파일에 적용하면 됩니다. 이 파일을 다운로드 받는 것이 좋으나, 더 자세히 알기 위해 SVG 정의를 살펴보면 아래와 같습니다.
 
@@ -73,12 +73,12 @@ const Item = ({ item, onRemoveItem }) => (
 }
 ~~~~~~~
 
-create-react-app 프로젝트에서 별도의 설치 없이 SVG를 쉽게 사용할 수 있습니다. 하지만 여러분이 웹팩같은 빌드 도구와 함께 스크래치로 React 프로젝트를 만든다면, 여러분이 직접 관리해야 하므로 다릅니다. SVG는 여러분의 애플리케이션을 좀 더 사용하기 쉽게 만들어 주기 때문에 활용할 수 있을 때마다 사용하길 권장합니다.
+create-react-app 프로젝트에서 별도의 설치 없이 SVG를 쉽게 사용할 수 있습니다. 하지만 여러분이 웹팩같은 빌드 도구와 함께 스크래치로 리액트 프로젝트를 만든다면, 여러분이 직접 관리해야 하므로 다릅니다. SVG는 여러분의 애플리케이션을 좀 더 사용하기 쉽게 만들어 주기 때문에 활용할 수 있을 때마다 사용하길 권장합니다.
 
 ### 실습하기
 
-* 마지막 부분의 소스 코드를 확인해보세요. (https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/CSS-in-React-SVG)
-* 마지막 부분의 변경사항들을 확인해보세요. (https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/CSS-in-React...hs/CSS-in-React-SVG?expand=1)
+* 마지막 장의 소스 코드를 확인합니다. (https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/CSS-in-React-SVG)
+* 마지막 장에서 변경된 코드를 확인합니다. (https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/CSS-in-React...hs/CSS-in-React-SVG?expand=1)
 * [리액트 앱 만들기 속 SVG]에 대해 더 알아보세요. (https://create-react-app.dev/docs/adding-images-fonts-and-files)
 * [리액트 속 SVG 배경 패턴]에 대해 더 알아보세요. (https://www.robinwieruch.de/react-svg-patterns)
 * 다른 SVG 아이콘을 애플리케이션에 적용해보세요.
