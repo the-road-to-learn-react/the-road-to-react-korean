@@ -1,36 +1,36 @@
-## React Component Definition (Advanced)
+## 리액트 컴포넌트 정의 (심화)
 
-The following refactorings are optional recommendations to explain the different JavaScript/React patterns. You can build complete React applications without these advanced patterns, so don't be discouraged if they seem too complicated.
+다음 리팩터링은 선택사항으로, 자바스크립트/리액트의 다양한 패턴을 설명합니다. 물론 이러한 고급 패턴 없이도 완전한 리액트 애플리케이션을 구축할 수 있습니다. 너무 복잡해 보인다면 권장하지 않습니다.
 
-All components in the *src/App.js* file are function component. JavaScript has multiple ways to declare functions. So far, we have used the function statement, though arrow functions can be used more concisely:
+*src/App.js* 파일에 있는 모든 컴포넌트는 함수형 컴포넌트였습니다. 지금까지는 화살표 함수(arrow functions)보다는 함수 선언식(function statement)을 사용해왔죠. 자바스크립트에는 함수를 선언하는 여러 가지 방법에 대해 알아보겠습니다.
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~
-// function declaration
+// 함수 선언
 function () { ... }
 
-// arrow function declaration
+// 화살표 함수 선언
 const () => { ... }
 ~~~~~~~
 
-You can remove the parentheses in an arrow function expression if it has only one argument, but multiple arguments require parentheses:
+전달하려는 인수가 1개인 경우에는 괄호를 제거 할 수 있습니다. 그러나 인수가 여러 개인 경우에는 반드시 괄호가 필요합니다.
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~
-// allowed
+// 허용
 const item => { ... }
 
-// allowed
+// 허용
 const (item) => { ... }
 
-// not allowed
+// 비허용
 const item, index => { ... }
 
-// allowed
+// 비허용
 const (item, index) => { ... }
 ~~~~~~~
 
-Defining React function components with arrow functions makes them more concise:
+화살표 함수를 사용하면 리액트 컴포넌트를 더욱 간결하게 정의할 수 있습니다.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -61,7 +61,7 @@ const List = () => {
 # leanpub-end-insert
 ~~~~~~~
 
-This holds also true for other functions, like the one we used in our JavaScript array's map method:
+자바스크립트 배열의 map 메서드에서 사용한 것처럼, 다른 함수에서도 마찬가지로 사용할 수 있습니다.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -83,23 +83,23 @@ const List = () => {
 };
 ~~~~~~~
 
-If an arrow function doesn't do *anything* in between, but only returns *something*, -- in other words, if an arrow function doesn't perform any task, but only returns information --, you can remove the **block body** (curly braces) of the function. In a **concise body**, an **implicit return statement** is attached, so you can remove the return statement:
+만약 화살표 함수의 내부가 하나의 구문으로 이루어진 경우(화살표 함수에서 반환값만 존재하는 경우), 함수의 **블록(block) 바디**(중괄호)를 제거할 수 있습니다. **간결한(concise) 바디**에서는 암시된 반환문을 포함하므로 반환문을 제거할 수 있습니다.
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~
-// with block body
+// 블록 바디 사용
 count => {
   // perform any task in between
 
   return count + 1;
 }
 
-// with concise body
+// 간결한 바디 사용
 count =>
   count + 1;
 ~~~~~~~
 
-This can be done for the App and List component as well, because they only return JSX and don't perform any task in between. Again it also applies for the arrow function that's used in the map function:
+이 작업은 App 및 List 컴포넌트에서도 적용할 수 있습니다. 애플리케이션 및 컴포넌트는 JSX만 반환할 뿐, 아무런 작업도 수행하지 않기 때문입니다. map 함수에서 사용하는 화살표 함수도 마찬가지입니다.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -130,12 +130,12 @@ const List = () =>
 # leanpub-end-insert
 ~~~~~~~
 
-Our JSX is more concise now, as it omits the function statement, the curly braces, and the return statement. However, remember this is an optional step, and that it's acceptable to use normal functions instead of arrow functions and block bodies with curly braces for arrow functions over implicit returns. Sometimes block bodies will be necessary to introduce more business logic between function signature and return statement:
+이제 JSX는 함수 선언, 중괄호, 반환문을 생략했기 때문에 더욱 간결해졌습니다. 그러나 이 과정은 선택 사항일 뿐입니다. 화살표 함수 대신에 일반 함수를 사용해도 되고, 화살표 함수에서 중괄호를 사용해도 됩니다. 혹은 함수 시그니쳐와 반환문 사이에 더 많은 비즈니스 로직을 도입하기 위해 블록 본문이 필요할 수도 있습니다.
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~
 const App = () => {
-  // perform any task in between
+  // 여기에서 세부 구현을 작업하세요
 
   return (
     <div>
@@ -145,11 +145,12 @@ const App = () => {
 };
 ~~~~~~~
 
-Be sure to understand this refactoring concept, because we'll move quickly from arrow function components with and without block bodies as we go. Which one we use will depend on the requirements of the component.
+앞으로 화살표 함수에서 블록 바디를 사용하지 않는 경우에 대해서는 빠르게 넘어갈 것이기 때문에 이 리팩터링 개념을 이해하고 넘어가세요. 물론 우리가 어떤 걸 사용할지는 컴포넌트의 요구 사항에 따라 다릅니다.
 
-### Exercises:
+### 실습하기
 
-* Confirm your [source code for the last section](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/React-Component-Definition).
-  * Confirm the [changes from the last section](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/Meet-another-React-Component...hs/React-Component-Definition?expand=1).
-* Read more about [JavaScript arrow functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions).
-* Familiarize yourself with arrow functions with block body and return, and concise body without return.
+* [마지막 장의 소스코드](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/React-Component-Definition)를 확인하세요.
+  * [마지막 장의 변경 사항](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/Meet-another-React-Component...hs/React-Component-Definition?expand=1)을 확인하세요.
+* [자바스크립트의 화살표 함수](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)에 해대 자세히 알아보세요.
+* 화살표 함수에 친숙해지도록 연습해보세요. 블록 바디는 반환문과 같이, 간결한 바디는 반환문 없이 사용해보세요.
+
