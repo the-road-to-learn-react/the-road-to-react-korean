@@ -1,18 +1,18 @@
-## Unit Testing to Integration Testing
+## 유닛 테스트에서 통합 테스트까지
 
-Testing source code is essential to programming, and should be seen as a mandatory exercise for serious developers. We want to verify our source code's quality and functionality before using it in production. The [testing pyramid](https://martinfowler.com/articles/practical-test-pyramid.html) will serve as our guide.
+소스 코드를 테스팅하는 것은 개발의 필수적인 과정이고, 개발을 진지하게 생각하는 사람이라면 반드시 익혀야 할 스킬입니다. 코드의 질과 성능을 확인하는 것은 코드를 실제로 배포하기 전에 거쳐야 할 과정입니다. 여기에서는 [테스팅 피라미드](https://martinfowler.com/articles/practical-test-pyramid.html)를 기준 삼아 이야기하도록 하겠습니다.
 
-The testing pyramid includes end-to-end tests, integration tests, and unit tests. Unit tests are used for small, isolated blocks of code, such as a single function or component. Integration tests help us figure out if these units work well together. An end-to-end test simulates a real-life scenario, such as the login flow in a web application. Unit tests are quick and easy to write and maintain; end-to-end tests are the opposite.
+테스팅 피라미드는 종단간 테스트, 통합 테스트, 그리고 유닛 테스트를 포함합니다. 유닛 테스트는 함수나 컴포넌트처럼 짧고, 따로 분리 가능 코드를 테스트할 때 사용합니다. 통합 테스트는 이러한 유닛들이 함께 잘 작동하는지 확인하기 위해 사용합니다. 마지막으로 종단간 테스트는 웹 어플리케이션에서의 로그인 플로우와 같이, 실제 일어날 법한 시나리오를 모방합니다. 유닛 테스트는 쉽고 빠르게 작성하고 유지할 수 있지만, 종단간 테스트는 정반대입니다.
 
-We want to have many unit tests covering our functions and components. After that, we can use several integration tests to make sure the most important functions and components work together as expected. Finally, we may need a few end-to-end tests to simulate critical scenarios. In this learning experience, we will cover **unit and integration tests**, along with a component specific testing technique called **snapshot tests**. **E2E tests** will be part of the exercise.
+유닛 테스트는 여러 함수와 컴포넌트를 모두 테스트해야 하기 때문에 여러 개를 작성해야 합니다. 그 다음으로는 가장 중요한 함수와 컴포넌트들이 함께 잘 작동하는지 확인하기 위해, 통합 테스트를 사용합니다. 마지막으로 우리는 몇 가지 중요한 시나리오를 모방해 보기 위해 몇 개의 종단간 테스트를 작성해야 할 수도 있습니다. 이번 학습에서는 **유닛 테스트와 통합 테스트**를 다룰 예정이고, 이에 더불어 컴포넌트에 특화된 테스팅 기술인 **스냅샷 테스트**에 대해서도 배울 예정입니다. **종단간 테스트**는 실습에 포함되어 있습니다.
 
-Since there are [many testing libraries](https://www.robinwieruch.de/react-testing-tutorial), it can be challenging to choose one as a beginner to React. We will use [Jest](https://jestjs.io/) by Facebook as a testing framework to avoid making this tutorial too opinionated. Most of the other testing libraries for React use Jest as foundation, so it's a good introduction.
+이미 많은 [테스팅 라이브러리](https://www.robinwieruch.de/react-testing-tutorial)가 존재하기 때문에, 리액트 초심자들은 사용할 라이브러리를 고르는 데 어려움을 겪을 수도 있습니다. 우리는 이 튜토리얼에서 너무 강한 의견을 피력하는 것을 피하기 위해, 페이스북에서 개발한 [Jest](https://jestjs.io/)를 테스팅 프레임워크로 활용하겠습니다. 다른 리액트 테스팅 라이브러리들 또한 Jest를 기반으로 개발된 것이 많기 때문에, 입문용으로는 더욱 좋습니다.
 
-### Unit to Integration Testing
+### 유닛 테스트와 통합 테스트
 
-Often the lines between unit and integration tests are unclear. Testing the List component with its Item component could be considered an integration test, but it could also be a unit test for two tightly coupled components. In this section, we start with unit testing and move towards integration testing. Everything in between is a spectrum between both.
+유닛 테스트와 통합 테스트의 차이를 구분하기 어려운 경우도 여럿 있습니다. 예를 들어 Item 컴포넌트를 담고 있는 List 컴포넌트를 테스팅하고자 한다면, 이는 통합 테스트라고 볼 수도 있겠지만 밀접하게 연관된 두 개의 컴포넌트 사이의 유닛 테스트일 수도 있겠죠. 이 섹션에서는 유닛 테스트에서 시작해서 통합 테스트를 향해 나아가 보도록 하겠습니다. 그 과정에서 마주하는 모든 것들은 이 양 극단 사이의 스펙트럼입니다.
 
-Let's start with a pseudo test in your *src/App.test.js* file:
+_src/App.test.js_ 에 간단한 테스트 양식을 적는 것으로 시작해보도록 하겠습니다.
 
 {title="src/App.test.js",lang="javascript"}
 ~~~~~~~
@@ -23,14 +23,14 @@ describe('something truthy', () => {
 });
 ~~~~~~~
 
-Fortunately, create-react-app comes with Jest. You can run the test using the interactive create-react-app test script on the command line. The output for all test cases will be presented in your command line interface.
+다행히도 create-react-app에는 Jest가 미리 설치되어 있기 때문에, 커맨드 라인에서 create-react-app의 테스트 스크립트를 실행하여 테스팅할 수 있습니다. 아래 명령어를 실행하면, 모든 테스트 케이스의 결과가 커맨드 라인에 출력됩니다.
 
 {title="Command Line",lang="text"}
 ~~~~~~~
 npm test
 ~~~~~~~
 
-Jest matches all files with a *test.js* suffix in its filename when its command is run. Successful tests are displayed in green; failed tests are displayed in red:
+테스트 스크립트를 실행하면, Jest는 파일명이 *test.js*로 끝나는 모든 파일을 확인합니다. 성공적으로 통과한 테스트는 초록색으로 표시되고, 실패한 테스트들은 빨간색으로 표시됩니다.
 
 {title="src/App.test.js",lang="javascript"}
 ~~~~~~~
@@ -41,27 +41,27 @@ describe('something truthy', () => {
 });
 ~~~~~~~
 
-Tests in Jest consist of **test suites** (`describe`), which are comprised of **test cases** (`it`), which have **assertions** (`expect`) that turn out green or red:
+Jest의 테스트는 기본적인 상위 구조인 **테스트 스위트(test suites)** (`describe`)로 이루어져 있고, 각각의 스위트는 **테스트 케이스(test cases)** (`it`)의 집합으로 구성되며, 각각의 테스트 케이스는 다시 여러 **단언(assertion)** (`expect`)으로 나뉩니다. 테스트 실행 시 빨간색이나 초록색으로 결과를 표시합니다.
 
 {title="src/App.test.js",lang="javascript"}
 ~~~~~~~
-// test suite
+// 테스트 스위트
 describe('truthy and falsy', () => {
-  // test case
+  // 테스트 케이스
   it('true to be true', () => {
-    // test assertion
+    // 테스트 단언
     expect(true).toBe(true);
   });
 
-  // test case
+  // 테스트 케이스
   it('false to be false', () => {
-    // test assertion
+    // 테스트 단언
     expect(false).toBe(false);
   });
 });
 ~~~~~~~
 
-The "it"-block describes one test case. It comes with a test description that returns success or failure. We can also wrap this block into a "describe"-block that defines our test suite with many "it"-blocks for one specific component. Both blocks are used to organize your test cases. Note that the `it` function is known in the JavaScript community as a single-test case function; in Jest, however, `it` is often used as an alias `test` function.
+"it" 블록은 한 개의 테스트 케이스를 나타냅니다. "it"문을 쓸 때는 테스트 성공 혹은 실패를 나타낼 설명을 함께 작성해주어야 합니다. 한 컴포넌트에 대한 테스트 케이스가 여러 개 있다면, "describe" 블록을 사용하여 이 케이스들을 하나의 테스트 스위트로 엮을 수 있습니다. 이 두 가지 블록들은 테스트 케이스를 정리하고, 가독성을 높이기 위해 사용합니다. 한 가지 유의할 점은, 자바스크립트 커뮤니티에서는 `it`을 단일 테스트 케이스 함수로 사용하지만, Jest에서는 `test` 함수에 대한 대체 명령어로 사용한다는 것입니다.
 
 {title="src/App.test.js",lang="javascript"}
 ~~~~~~~
@@ -74,14 +74,14 @@ describe('something truthy', () => {
 });
 ~~~~~~~
 
-To use React components in Jest, we require a utility library for rendering components in a test environment:
+Jest에서 리액트 컴포넌트를 활용하려면, 컴포넌트를 테스트 환경에서 렌더링하기 위한 라이브러리를 별도로 설치해야 합니다.
 
 {title="Command Line",lang="text"}
 ~~~~~~~
 npm install react-test-renderer --save-dev
 ~~~~~~~
 
-Also, before you can test your first components, you have to export them from your *src/App.js* file:
+컴포넌트를 테스팅하려면 먼저 _src/App.js_ 파일에서 작성한 컴포넌트들을 내보내야 합니다.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -94,7 +94,7 @@ export { SearchForm, InputWithLabel, List, Item };
 # leanpub-end-insert
 ~~~~~~~
 
-Import them along with the previously installed utility library in the *src/App.test.js* file:
+방금 설치한 유틸리티 라이브러리와 함께 _src/App.test.js_ 파일에 컴포넌트를 가져옵니다.
 
 {title="src/App.test.js",lang="javascript"}
 ~~~~~~~
@@ -106,7 +106,7 @@ import App, { Item, List, SearchForm, InputWithLabel } from './App';
 # leanpub-end-insert
 ~~~~~~~
 
-Write your first component test for the Item component. The test case renders the component with a given `item` using the utility library:
+Item 컴포넌트의 첫 번째 컴포넌트 테스트를 작성합니다. 이 테스트 케이스는 유틸리티 라이브러리를 사용하여, 특정 `item`을 기반으로 컴포넌트를 렌더링 합니다.
 
 {title="src/App.test.js",lang="javascript"}
 ~~~~~~~
@@ -137,7 +137,7 @@ describe('Item', () => {
 # leanpub-end-insert
 ~~~~~~~
 
-Information about a component's or element's attributes are available via the `props` property. In the test assertion, we find the anchor tag (`a`) and its `href` attribute, and perform an equality check. If the test turns out green, we can be sure the anchor tag's `href` attribute is set to the correct `url` property of the `item`. In the same test case, we can add more test assertions for the other item's properties:
+컴포넌트 혹은 element의 속성에 대한 정보는 `props`를 통해 확인할 수 있습니다. 이 테스트 단언에서 우리는 `a` 태그를 찾고, 해당 태그의 `href` 속성을 추출한 후 일치 여부를 확인합니다. 테스트 결과가 초록색이면, `a` 태그의 `href` 속성이 `item`의 `url` prop과 일치한다는 것을 확인할 수 있습니다. 같은 테스트 케이스 안에서, 다른 속성을 확인하기 위해 테스트 단언을 여러 개 추가할 수도 있습니다.
 
 {title="src/App.test.js",lang="javascript"}
 ~~~~~~~
@@ -167,7 +167,7 @@ describe('Item', () => {
 });
 ~~~~~~~
 
-Since there are multiple `span` elements, we find all of them and select the second one (index is `1` , because we count from `0`) and compare its React `children` prop to the item's `author`. This test isn't thorough enough, though. Once the order of `span` elements in the Item component changes, the test fails. Avoid this flaw by changing the assertion to:
+이 컴포넌트에는 `span` 객체가 여러 개 있기 때문에, 테스트를 위해서 우리는 모든 `span` 객체를 찾은 후, 두 번째 항목을 선택하여 (숫자를 0부터 세고 있기 때문에 인덱스는 `1`입니다.) 리액트 `children` 속성을 item의 `author` 속성과 비교합니다. 다만, 이 테스트는 엄밀한 테스트는 아닙니다. `span` 객체의 순서가 바뀌면 이 테스트는 실패합니다. 이와 같은 오류를 방지하기 위해, 단언을 다음과 같이 바꿀 수 있습니다.
 
 {title="src/App.test.js",lang="javascript"}
 ~~~~~~~
@@ -187,9 +187,9 @@ describe('Item', () => {
 });
 ~~~~~~~
 
-The test assertion isn't as specific anymore. It just tests whether there is one element with the item's `author` property. You can apply this technique for all the other properties of the item yourself. Otherwise, leave it for later as exercise.
+이 수정된 테스트 단언은 앞선 단언보다 덜 구체적입니다. 이 경우에는 item의 `author` 속성을 가지고 있는 객체가 존재하는지만 확인합니다. Item의 나머지 속성들을 직접 확인해보고자 한다면, 이 방식을 사용하면 됩니다. 아닐 경우에는 이후 예제를 위해 남겨 두세요.
 
-We tested whether the Item component renders as text or HTML attributes (`href`), but we didn't test the callback handler. The following test case makes this assertion by simulating a click event via the `button` element's `onClick` attribute:
+우리는 Item 컴포넌트가 텍스트나 HTML 속성(`href`)을 잘 렌더링하는지는 확인했지만, 콜백 핸들러를 확인하지는 않았습니다. 다음에 보이는 테스트 케이스는 `button` 객체의 `onClick` 속성을 모방함으로서 클릭 이벤트를 실행하고, 단언을 제시합니다.
 
 {title="src/App.test.js",lang="javascript"}
 ~~~~~~~
@@ -219,9 +219,9 @@ describe('Item', () => {
 });
 ~~~~~~~
 
-Jest lets us pass a test-specific function to the Item component as prop. These test specific functions are called **spy**, **stub**, or **mock**; each is used for different test scenarios. The `jest.fn()` returns us a *mock* for the actual function, which lets us capture when it's called. As a result, we can use Jest assertions like `toHaveBeenCalledTimes`, which lets us assert a number of times the function has been called; and `toHaveBeenCalledWith`, to verify arguments that are passed to it.
+Jest는 Item 컴포넌트에 테스트 전용 함수를 prop으로 전달할 수 있게 해 줍니다. 이와 같은 테스트 전용 함수들은 **spy**, **stub**, 혹은 **mock** 이라고 불리고, 서로 각기 다른 테스트 시나리오에서 사용됩니다. `jest.fn()` 함수는 실제 함수의 복제품인 *mock*을 리턴하고, 함수가 언제 호출되었는지를 참고할 수 있게 해 줍니다. 이 덕분에 우리는 Jest에서 함수가 호출된 횟수를 측정해 주는 `toHaveBeenCalledTimes`나, 함수 호출 시 사용된 변수가 무엇인지 알려주는 `toHaveBeenCalledWith`와 같은 단언들을 사용할 수 있습니다.
 
-Item component's unit test is complete, because we tested input (`item`) and output (`onRemoveItem`). The two shouldn't be confused with input (arguments) and output (JSX) of the function component, which were also tested as. One last improvement makes the test suite for the Item component more concise by giving it a shared setup function:
+앞에서 우리는 Item 컴포넌트의 입력(`item`)과 출력(`onRemoveItem`) 기능을 모두 확인했고, 유닛 테스트가 완료되었습니다. 이 입출력 결과는 따로 테스팅한 함수형 컴포넌트의 입력(변수)와 출력(JSX)과는 별개의 개념입니다. 마지막으로, 공유된 setup 함수를 제공하여 테스트 스위트 코드의 가독성을 조금 더 높일 수 있습니다.
 
 {title="src/App.test.js",lang="javascript"}
 ~~~~~~~
@@ -259,7 +259,7 @@ describe('Item', () => {
 });
 ~~~~~~~
 
-A common setup (or teardown) function in tests removes duplicated code. Since the component must be rendered for both test cases, and the props are the same for both renderings, we can share this code in a common setup function. From there, we'll move on to testing the List component:
+테스트 내에서 공유된 setup 함수(혹은 teardown 함수)는 중복 코드를 제거해 주는 역할을 합니다. 각각의 테스트 케이스에 대해 컴포넌트를 렌더링해야 한다는 점이 일치하고, props 또한 같기 때문에 setup 함수 하나로 코드를 공유할 수 있습니다. 이 다음부터는 List 컴포넌트로 넘어가겠습니다.
 
 {title="src/App.test.js",lang="javascript"}
 ~~~~~~~
@@ -299,9 +299,9 @@ describe('List', () => {
 # leanpub-end-insert
 ~~~~~~~
 
-The test checks straightforward whether two Item components are rendered for the two items in the list. You could continue testing the List component by checking whether each callback handler (`onRemoveItem`) is called for each Item component, which would have a similar solution to the previous Item component's test. Is this test still a unit test or already an integration test?
+이 테스트는 단순히 리스트 내의 두 항목에 의해 Item 컴포넌트 두 개가 만들어졌는지 확인합니다. 이 다음에는 콜백 핸들러 함수(`onRemoveItem`)가 각각의 Item 컴포넌트에서 불리는지 확인해야 하는데, 앞서 Item 컴포넌트에서와 비슷한 방식으로 확인하면 됩니다. 그럼 이 테스트는 유닛 테스트일까요, 아니면 통합 테스트일까요?
 
-Keeping this question in the room, we will move on to the SearchForm with InputWithLabel component:
+이 질문을 염두에 두고, 다음은 InputWithLabel 컴포넌트의 SearchForm으로 넘어가겠습니다.
 
 {title="src/App.test.js",lang="javascript"}
 ~~~~~~~
@@ -329,7 +329,7 @@ describe('SearchForm', () => {
 # leanpub-end-insert
 ~~~~~~~
 
-In this test, we assert whether the InputWithLabel component receives the correct prop from the SearchForm component. Essentially the test stops before the InputWithLabel component, because it only tests the interface (props) of it. Arguably it's still a unit test, because the underlying implementation details of the InputWithLabel component could change without changing the interface. You can change the test to make it work through to the InputWithLabel component's input field, because all child components and its elements are rendered too:
+이 테스트에서는 InputWithLabel 컴포넌트가 SearchForm 컴포넌트에서 올바른 prop을 전달받는지를 확인합니다. 다르게 말한다면, 이 테스트는 InputWithLabel 컴포넌트의 인터페이스(props)만 테스트하기 때문에 테스트가 InputWithLabel 컴포넌트가 렌더링되기 전에 끝난다는 뜻입니다. 그럼에도 불구하고 인터페이스를 그대로 유지하면서도 InputWithLabel 컴포넌트의 구조가 바뀔 수 있기 때문에 이 테스트는 여전히 유닛 테스트라고 할 수 있습니다. 이미 모든 컴포넌트가 렌더링 되어 있기 때문에, InputWithLabel의 input 필드로 입력값을 받는 방식으로 테스트를 수정할 수도 있습니다.
 
 {title="src/App.test.js",lang="javascript"}
 ~~~~~~~
@@ -346,7 +346,7 @@ describe('SearchForm', () => {
 });
 ~~~~~~~
 
-This is our first integration test between the SearchForm and InputWithLabel components, which aren't as tightly coupled as the List and Item components. The InputWithLabel component can be used in other components (highly reusable), whereas the Item component is essentially a non-reusable part of the List component.
+이것은 우리의 첫 번째 통합 테스트입니다. SearchForm 컴포넌트와 InputWithLabel 컴포넌트는 List와 Item 컴포넌트처럼 관계가 밀접하지는 않은데요, InputWithLabel 컴포넌트는 재사용성이 높기 때문에 여러 다른 컴포넌트에서도 사용할 수 있지만, Item 컴포넌트는 List 컴포넌트 내에서만 사용할 수 있기 때문입니다.
 
 {title="src/App.test.js",lang="javascript"}
 ~~~~~~~
@@ -385,9 +385,9 @@ describe('SearchForm', () => {
 });
 ~~~~~~~
 
-Like the Item component, the last two tests asserted the component's callback handler(s). All input (non function props) and output (callback handler function) props are tested for the SearchForm component's interface and integration with the InputWithLabel component.
+Item 컴포넌트에서 했던 것처럼, 앞선 두 개의 테스트는 컴포넌트의 콜백 핸들러를 확인합니다. 모든 입력(함수가 아닌 props)과 출력 (콜백 핸들러 함수) props는 SearchForm 컴포넌트의 인터페이스에서 잘 작동하는지, 그리고 InputWithLabel 컴포넌트와의 관계에서 잘 통합되는지 테스트를 거치게 됩니다.
 
-You can test edge cases  like a disabled button as well. The `update()` method on the rendered test component helps us provide new props to the component at stake:
+버튼이 비활성화된 경우 등의 엣지 케이스를 확인해볼 수도 있습니다. 테스트 컴포넌트 내의 `update()` 함수를 사용하면 컴포넌트에 새로운 props를 제공할 수 있습니다.
 
 {title="src/App.test.js",lang="javascript"}
 ~~~~~~~
@@ -420,7 +420,7 @@ describe('SearchForm', () => {
 });
 ~~~~~~~
 
-Now we'll move one level higher in our application's component hierarchy. The App component fetches the list data, which is provided to the List component. After importing the App component, a naive test would look like this:
+이 다음에는 한 단계 위의 컴포넌트를 다루겠습니다. App 컴포넌트는 리스트 데이터를 불러와서 List 컴포넌트에 제공해 줍니다. App 컴포넌트를 불러온 후, 아래와 같이 테스트를 작성합니다.
 
 {title="src/App.test.js",lang="javascript"}
 ~~~~~~~
@@ -454,7 +454,7 @@ describe('App', () => {
 # leanpub-end-insert
 ~~~~~~~
 
-In the actual App component, a third-party library (axios) is used to make a request to a remote API. This API returns data we can't foresee in the test, so we have to mock it instead. Jest provides mechanisms that mock entire libraries and their methods. In this case, we want  to mock the `get()` method of axios to return our desired data:
+실제 App 컴포넌트에서 우리는 외부 라이브러리(axios)를 활용하여 외부 API에 요청을 보냅니다. 이 API 요청은 우리가 테스트에서 예측할 수 없는 데이터를 반환하므로, 여기에서는 이 요청을 모방(mock)해야 합니다. Jest에는 이와 같이 라이브러리와 라이브러리 내 함수들을 모방할 수 있는 방법들을 제공합니다. 이 경우에서 우리는 axios에서 데이터를 반환하는 역할을 하는 `get()` 함수를 모방하고자 합니다.
 
 {title="src/App.test.js",lang="javascript"}
 ~~~~~~~
@@ -493,7 +493,7 @@ describe('App', () => {
 });
 ~~~~~~~
 
-The test reads synchronously, but we still have to deal with the asynchronous data. The component should re-render when its state updates. We can perform this with our utility library and async/await:
+이 테스트는 순차적으로 진행되지만, 데이터는 비동기적으로 반환됩니다. 이 컴포넌트는 state가 달라지면 다시 렌더링되어야 하는데, 이는 유틸리티 라이브러리와 async/await를 활용하여 해결할 수 있습니다.
 
 {title="src/App.test.js",lang="javascript"}
 ~~~~~~~
@@ -524,7 +524,7 @@ describe('App', () => {
 });
 ~~~~~~~
 
-Instead of rendering the App component, we mocked the response from the remote API by mocking the method that fetches the data. To stay on the *happy path*, we told the test to treat the component as an asynchronously updating component. You can apply a similar strategy to the *unhappy path*:
+App 컴포넌트를 렌더링하는 대신, 우리는 데이터를 반환하는 함수를 모방함으로서 외부 API가 반환할 응답을 모방합니다. 데이터가 성공적으로 반환되는 경우에 대해서, 우리는 테스트로 하여금 우리의 컴포넌트가 비동기적으로 업데이트되는 컴포넌트라고 인지하게 만듭니다. API 호출에 실패하는 경우에 대해서도 비슷한 방식으로 확인할 수 있습니다.
 
 {title="src/App.test.js",lang="javascript"}
 ~~~~~~~
@@ -553,11 +553,11 @@ describe('App', () => {
 });
 ~~~~~~~
 
-The data fetching and integration with a remote API is tested now. We moved from focused unit tests for single components to tests with multiple components and their integration with third-parties like axios and remote APIs.
+이제 외부 API를 활용하여 데이터를 호출하고, 통합하는 부분이 완료되었습니다. 여기에서 우리는 단순한 유닛 테스트에서 더 나아가서, 여러 컴포넌트를 동시에 테스팅하고, 외부 라이브러리나 API와 엮여 있는 부분을 테스팅할 수 있는 방법도 배웠습니다.
 
-### Snapshot Testing
+### 스냅샷 테스팅
 
-Jest also lets you take a **snapshot** of your rendered component, run it against future captures, and be notified of changes. Changes can then be accepted or denied depending on the desired outcome. This mechanism complements unit and integration tests well, since it only tests the differences of the rendered output without heavy maintenance costs. To see it in action, extend the Item component test suite with your first snapshot test:
+이에 더불어, Jest는 렌더링 완료된 컴포넌트의 **스냅샷**을 찍을 수 있게 해 주는데요, 이는 이후의 스냅샷과 비교하여 변화를 감지하는 역할을 합니다. 원하는 결과에 따라서 이와 같은 변화를 허용할 수도, 거부할 수도 있습니다. 이 방식은 유닛 테스트와 통합 테스트와도 함께 사용될 수 있는데요, 여러 관리 비용을 지불하지 않고도 출력 값 자체만을 비교할 수 있는 방법을 제공하기 때문입니다. 실제로 어떻게 작동하는지 확인하려면 Item 컴포넌트의 테스트 스위트에 새로운 스냅샷 테스트를 추가하면 됩니다.
 
 {title="src/App.test.js",lang="javascript"}
 ~~~~~~~
@@ -581,16 +581,16 @@ describe('Item', () => {
 });
 ~~~~~~~
 
-Run your tests again and observe how they succeed or fail. Once we change the output of the render block in Item component in the *src/App.js* file, by changing the structure of the returned HTML, the snapshot test fails. We can then decide whether to update the snapshot or to investigate the Item component.
+테스트를 다시 돌려 보고, 성공하는지, 실패하는지를 확인해 보세요. _src/App.js_ 에서 Item 컴포넌트의 HTML 구조를 바꾸는 등 변화를 줘서 출력값을 바꾼다면, 스냅샷 테스트는 실패합니다. 이 다음에는, 스냅샷을 업데이트할 지, Item 컴포넌트를 확인할 지 결정할 수 있습니다.
 
-Jest stores snapshots in a folder so it can validate the difference against future snapshot tests. Users can share these snapshots across teams for version control (e.g. git). Running a snapshot test for the first time creates the snapshot file in your project's folder. When the test is run again, the snapshot is expected to match the version from the latest test run. This is how we make sure the DOM stays the same.
+Jest는 이후 스냅샷 테스트와의 비교를 위해 스냅샷을 한 폴더 안에 저장합니다. 사용자들은 버전 관리(git 등)을 위해 여러 팀 간에 이와 같은 스냅샷들을 공유할 수도 있습니다. 스냅샷 테스트를 처음 실행하면, 프로젝트 폴더 안에 스냅샷 파일이 생성됩니다. 테스트를 다시 실행하면 이 스냅샷은 직전 테스트 결과와 일치하는지 여부를 확인하게 됩니다. 이와 같은 절차를 통해 DOM이 유지되는 것을 보장할 수 있습니다.
 
-### Exercises:
+### 실습하기
 
-* Confirm your [source code for the last section](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/react-testing).
-  * Confirm the [changes from the last section](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/react-modern-final...hs/react-testing?expand=1).
-* Add one snapshot test for each of all the other components.
-* Read more about [testing React components](https://www.robinwieruch.de/react-testing-tutorial).
-  * Read more about [Jest](https://jestjs.io/) and [Jest for React](https://www.robinwieruch.de/react-testing-jest/) for unit, integration and snapshot tests.
-* Read more about [E2E tests in React](https://www.robinwieruch.de/react-testing-cypress).
-* While you continue with the learning experience in the upcoming sections, keep your tests green and add new tests whenever you feel the need for it.
+* [마지막 장의 소스 코드](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/react-testing)를 확인하세요.
+  * [마지막 장의 변경 사항](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/react-modern-final...hs/react-testing?expand=1)을 확인하세요.
+* 모든 컴포넌트에 대해 스냅샷 테스트를 하나씩 작성하세요.
+* [리액트 컴포넌트 테스트](https://www.robinwieruch.de/react-testing-tutorial)에 대해 더 알아봅니다.
+  * 유닛 테스트, 통합 테스트, 스냅샷 테스트에 더 알아보기 위해 [Jest](https://jestjs.io/) 와 [[저자 블로그] 리액트를 위한 Jest 사용 방법](https://www.robinwieruch.de/react-testing-jest/)를 활용할 수 있습니다.
+* [리액트 종단간 테스트](https://www.robinwieruch.de/react-testing-cypress)에 대해 더 알아봅니다.
+* 다음에 나올 내용을 학습하면서, 계속 테스트 결과를 초록색으로 유지하고, 필요하다고 느낄 때마다 새 테스트를 작성해 줍시다.
