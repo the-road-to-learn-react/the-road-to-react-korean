@@ -1,17 +1,17 @@
-## Imperative React
+## 명령형 리액트
 
-React is inherently declarative, starting with JSX and ending with hooks. In JSX, we tell React *what* to render and not *how* to render it. In a React side-effect Hook (useEffect), we express when to achieve *what* instead of *how* to achieve it. Sometimes, however, we'll want to access the rendered elements of JSX imperatively, in cases such as these:
+리액트는 본질적으로 JSX로 시작하고 훅으로 끝나는 선언형입니다. JSX에서는 리액트에게 **어떻게**가 아니라 **무엇**을 렌더링할지 알려줍니다. 사이드 이펙트 훅 (useEffect)에서는 **어떻게** 달성할지가 아니라 **무엇**을 언제 달성해야 하는지를 표현합니다. 하지만 때때로 다음과 같이 JSX의 렌더링 된 엘레먼트를 명령형으로 접근해야 하는 경우도 있습니다.
 
-* read/write access to elements via the DOM API:
-  * measure (read) an element's width or height
-  * setting (write) an input field's focus state
-* implementation of more complex animations:
-  * setting transitions
-  * orchestrating transitions
-* integration of third-party libraries:
-  * [D3](https://d3js.org/) is a popular imperative chart library
+* DOM API를 통해 엘레먼트 읽기/쓰기
+  * 엘레먼트의 넓이나 높이 측정 (읽기)
+  * 입력 필드의 포커스 상태 설정 (쓰기)
+* 더 복잡한 애니메이션 구현
+  * 전환 설정
+  * 전환 조정
+* 서드 파티 라이브러리 통합
+  * [D3](https://d3js.org/) 은 자주 쓰이는 명령형 차트 라이브러리입니다.
 
-Because imperative programming in React is often verbose and counterintuitive, we'll walk only through a small example for setting the focus of an input field imperatively. For the declarative way, simply set the input field's autofocus attribute:
+리액트에서 명령형 프로그래밍은 장황하고 직관적이지 않기 때문에 입력 필드의 포커스를 설정하는 작은 예시만 살펴보겠습니다. 선언형 방법에서는 입력 필드의 자동 포커스 속성을 설정하기만 하면 됩니다.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -32,7 +32,7 @@ const InputWithLabel = ({ ... }) => (
 );
 ~~~~~~~
 
-This works, but only if one of the reusable components is rendered once. For instance, if the App component renders two InputWithLabel components, only the last rendered component receives the auto-focus on its render. However, since we have a reusable React component here, we can pass a dedicated prop and let the developer decide whether its input field should have an autofocus or not:
+위의 코드도 동작하지만, 재사용 가능한 컴포넌트 중 하나가 한 번만 렌더링 되는 경우에만 해당합니다. 예를 들어, App 컴포넌트가 두 InputWithLabel 컴포넌트를 렌더링하면 마지막에 렌더링 된 컴포넌트만 자동 포커스를 받습니다. 하지만 여기에는 재사용 가능한 리액트 컴포넌트가 있어 전용 prop을 전달하고 개발자가 입력 필드의 자동 포커스 여부를 결정하도록 할 수 있습니다.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -60,7 +60,7 @@ const App = () => {
 };
 ~~~~~~~
 
-Using just `isFocused` as an attribute is equivalent to `isFocused={true}`. Within the component, use the new prop for the input field's `autoFocus` attribute:
+속성으로 `isFocused`만 사용하는 것은 `isFocused={true}`와 같습니다. 컴포넌트 내에서 이 새로운 prop을 입력 필드의 `autoFocus` 속성에 사용하세요.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -90,7 +90,7 @@ const InputWithLabel = ({
 );
 ~~~~~~~
 
-The feature works, yet it's still a declarative implementation. We are telling React *what* to do and not *how* to do it. Even though it's possible to do it with the declarative approach, let's refactor this scenario to an imperative approach. We want to execute the `focus()` method programmatically via the input field's DOM API once it has been rendered:
+포커스 기능은 작동하지만, 여전히 선언형 구현 방식입니다. **어떻게**가 아니라 **무엇**을 해야하는지를 정의하고 있기 때문입니다. 이렇게 선언형 접근법으로도 할 수 있지만, 이 시나리오를 명령형 접근으로 리팩토링 해보겠습니다. 입력 필드가 렌더링되면 그것의 DOM API를 통해 `focus()` 메서드를 프로그래밍적으로 실행합니다.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -138,17 +138,21 @@ const InputWithLabel = ({
 };
 ~~~~~~~
 
-All the essential steps are marked with comments that are explained step by step:
+모든 필수적인 단계를 주석으로 표시하고 단계별로 설명합니다.
 
-* (A) First, create a `ref` with **React's useRef hook**. This `ref` object is a persistent value which stays intact over the lifetime of a React component. It comes with a property called `current`, which, in contrast to the `ref` object, can be changed.
-* (B) Second, the `ref` is passed to the input field's JSX-reserved `ref` attribute and the element instance is assigned to the changeable `current` property.
-* (C) Third, opt into React's lifecycle with React's useEffect Hook, performing the focus on the input field when the component renders (or its dependencies change).
-* (D) And fourth, since the `ref` is passed to the input field's `ref` attribute, its `current` property gives access to the element. Execute its focus programmatically as a side-effect, but only if `isFocused` is set and the `current` property is existent.
+* (A) **useRef** 훅으로 `ref`를 생성하세요. `ref` 개체는 리액트 컴포넌트의 생명주기 동안 그대로 유지되는 지속적인 값입니다. 여기에는 `ref` 개체와 달리 변경될 수 있는 `current` 속성이 포함되어 있습니다.
 
-This was an example of how to move from declarative to imperative programming in React. It's now always possible to go the declarative way, so the imperative approach is necessary. This lesson is for the sake of learning about the DOM API in React.
+* (B) 다음으로, `ref`는 JSX로 미리 지정한 입력 필드의 `ref` 속성으로 전달되고 엘레먼트 인스턴스는 변경 가능한 `current` 속성에 할당됩니다.
 
-### Exercises:
+* (C) useEffect 훅으로 리액트 생명주기에 들어가 컴포넌트가 렌더링될 때 (또는 그것의 의존성이 변할 때) 입력 필드에 포커스를 수행합니다.
 
-* Confirm your [source code for the last section](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/Imperative-React).
-  * Confirm the [changes from the last section](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/React-Component-Composition...hs/Imperative-React?expand=1).
-* Read more about [React's useRef Hook](https://reactjs.org/docs/hooks-reference.html#useref).
+* (D) 마지막으로, `ref`가 입력 필드의 `ref` 속성에 전달되었기 때문에 그것의 `current` 속성으로 엘레먼트에 접근 가능합니다. 사이드 이펙트로 포커스를 프로그래밍적으로 실행하세요. 단, `isFocused`가 설정되고 `current` 속성이 존재할 때에만 해당합니다.
+
+위의 예제를 통해 선언형 프로그래밍에서 명령형 프로그래밍으로 어떻게 이동하는지를 배웠습니다. 이제는 선언형으로 프로그래밍하는 것이 항상 가능하기 때문에 명령형 접근법이 필수적이며, 리액트의 DOM API에 대해 배우기 위해 필요합니다.
+
+### 읽어보기
+* [useRef 훅](https://reactjs.org/docs/hooks-reference.html#useref)에 대해 더 읽어보세요. 
+
+### 실습하기
+* [마지막 장의 소스 코드](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/Imperative-React)를 확인하세요.
+* [마지막 장의 변경 사항](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/React-Component-Composition...hs/Imperative-React?expand=1)을 확인하세요.
