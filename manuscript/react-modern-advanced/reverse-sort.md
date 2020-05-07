@@ -122,7 +122,7 @@ console.log(user);
 
 ### 실습하기
 
-- [마지막 장의 소스 코드](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/Reverse-Sort))를 확인합니다.
+- [마지막 장의 소스 코드](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/Reverse-Sort)를 확인합니다.
   - [마지막 장에서 변경된 코드](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/Sort...hs/Reverse-Sort?expand=1)를 확인합니다.
 - App 컴포넌트가 아니라 List 컴포넌트 안에서 정렬 상태값을 관리할 때의 단점이 무엇일지 생각해보세요. 잘 모르겠다면 "Title'로 배열을 정렬한 뒤 다른 책을 검색해보세요. App 컴포넌트에서 정렬 상태값을 관리한다면 어떤 게 달라질까요?
 - 사용자가 현재 선택된 정렬 기준과 정렬 방향이 무엇인지 잘 알 수 있도록 여러분만의 스타일링 기술을 사용해봅니다. 각 정렬 버튼 옆에 [위, 아래 화살표 SVG](https://www.flaticon.com/packs/arrow-set-2)를 추가하는 것도 하나의 방법입니다.
