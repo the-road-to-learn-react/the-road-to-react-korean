@@ -4,7 +4,7 @@
 
 이번 장은 SVG 아이콘을 더 멋지고 정확하게 사용할 수 있도록 하는, 이전에 다뤘던 "리액트에서의 CSS"를 기반으로 합니다. 다른 꾸미기 기법이나, 혹은 전혀 꾸미지 않아도 되며, SVG는 꾸미기 없이도 괜찮습니다. 
 
-이 SVG 아이콘은 [플랫아이콘 무료 사이트](https://www.flaticon.com/authors/freepik)에 있습니다. 이 사이트의 많은 SVG는 원작자를 남기면 무료로 사용할 수 있습니다. (https://www.flaticon.com/free-icon/check_109748) 여기서 SVG로 아이콘을 다운로드 할 수 있으며 프로젝트 *src/check.svg* 파일에 적용하면 됩니다. 이 파일을 다운로드 받는 것이 좋으나, 더 자세히 알기 위해 SVG 정의를 살펴보면 아래와 같습니다.
+이 SVG 아이콘은 [플랫아이콘 무료 사이트](https://www.flaticon.com/authors/freepik)에 있습니다. 이 사이트의 많은 SVG는 원작자를 남기면 무료로 사용할 수 있습니다. (https://www.flaticon.com/free-icon/check_109748) 여기서 SVG로 아이콘을 다운로드할 수 있으며 프로젝트 *src/check.svg* 파일에 적용하면 됩니다. 이 파일을 다운로드하는 것이 좋으나, 더 자세히 알기 위해 SVG 정의를 살펴보면 아래와 같습니다.
 
 {title="Code Playground",lang="html"}
 ~~~~~~~
@@ -23,7 +23,7 @@
 </svg>
 ~~~~~~~
 
-create-react-app을 다시 쓰기 때문에, 리액트 컴포넌트(CSS와 유사한)로 SVG를 바로 가져올 수 있습니다. *src/App.js*에서 SVG를 가져오기 위해 아래 문법을 사용합니다.
+create-react-app을 다시 쓰기 때문에, 바로 리액트 컴포넌트로 CSS와 비슷하게 SVG를 가져올 수 있습니다. *src/App.js*에서 SVG를 가져오기 위해 아래 문법을 사용합니다.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -36,7 +36,7 @@ import { ReactComponent as Check } from './check.svg';
 # leanpub-end-insert
 ~~~~~~~
 
-SVG를 가져오게 되면, (예. 로고, 배경) 다양한 SVG를 활용할 수 있습니다. 버튼 텍스트 대신, SVG 컴포넌트로 'height'와 'width' 속성을 사용할 수 있습니다. 
+SVG를 가져와서(예. 로고, 배경) 다양한 용도로 활용할 수 있습니다. 버튼에 텍스트 대신 'height'와 'width' 속성이 있는 SVG 컴포넌트를 사용할 수 있습니다.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -73,7 +73,7 @@ const Item = ({ item, onRemoveItem }) => (
 }
 ~~~~~~~
 
-create-react-app 프로젝트에서 별도의 설치 없이 SVG를 쉽게 사용할 수 있습니다. 하지만 여러분이 웹팩같은 빌드 도구와 함께 스크래치로 리액트 프로젝트를 만든다면, 여러분이 직접 관리해야 하므로 다릅니다. SVG는 여러분의 애플리케이션을 좀 더 사용하기 쉽게 만들어 주기 때문에 활용할 수 있을 때마다 사용하길 권장합니다.
+create-react-app 프로젝트에서 별도의 설치 없이 SVG를 쉽게 사용할 수 있습니다. 하지만 여러분이 웹팩 같은 빌드 도구와 함께 스크래치로 리액트 프로젝트를 만든다면, 여러분이 직접 관리해야 하므로 다릅니다. SVG는 여러분의 애플리케이션을 좀 더 사용하기 쉽게 만들어 주기 때문에 활용할 수 있을 때마다 사용하길 권장합니다.
 
 ### 실습하기
 
