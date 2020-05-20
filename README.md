@@ -1,19 +1,23 @@
-# The Road to React [Book]
+# 더 로드 투 런 리액트 [Book] 🇰🇷
 
-Official repository for [The Road to React](http://roadtoreact.com/). If you want to leave a review, please do it on [Amazon](https://amzn.to/2LHjxRB) or [Goodreads](https://www.goodreads.com/book/show/37503118-the-road-to-learn-react).
+[더 로드 투 런 리액트](http://roadtoreact.com/) 한국어 공식 깃허브 리퍼지토리입니다. 
 
-## Updates, Help and Support
+[아마존](https://amzn.to/2LHjxRB) 또는[굿리드](https://www.goodreads.com/book/show/37503118-the-road-to-learn-react)에서 서평을 남겨주세요.
 
-* Get book updates via [E-Mail](https://www.getrevue.co/profile/rwieruch) or [Twitter](https://twitter.com/rwieruch)
-* Get help, while learning with the book or teach others, in the official [Slack Channel](https://courses.robinwieruch.de/community-join)
-* Find out how you can [support the Book](https://www.robinwieruch.de/about/)
+## 참여 방법
+### 후기쓰기
+* [아마존](https://www.amazon.com/dp/B077HJFCQX?tag=21moves-20)과 [굿리드](https://www.goodreads.com/book/show/37503118-the-road-to-learn-react)에서 여러분의 서평과 후기를 남겨주세요.
 
-## Contribute
+### 소식받기
+* 도서 수정 관련 소식은 [이메일](https://www.getrevue.co/profile/rwieruch)과 [트위터](https://twitter.com/rwieruch)를 통해 전하고 있습니다.
 
-You can help to improve the book by opening Issues and Pull Requests (PR).
+### 도움받기
+* 학습 도중 도움이 필요하거나, 다른 사람을 도와주고 싶다면 "The Road to learn React" 독자 커뮤니티 [슬랙](https://slack-the-road-to-learn-react.wieruch.com/)에 들어오세요.
+* 한국어 사용자를 위한 채널이 열려있습니다. `#road-to-react-korean` 채널에서 함께 공부할 수 있습니다.
 
-You can open up any PR that corrects spelling or explains a certain lesson with more detail. When writing such a technical book, you get fast blind on what needs more explanation and on what is already explained well.
+### 후원하기
+* 이 책의 프로젝트 후원자가 되실 수 있습니다. [후원 방법](https://www.robinwieruch.de/about/)에서 자세한 내용을 확인하세요.
 
-In addition, you can open Issues when you run into problems. In order to make the fix for the Issue as easy as possible, please provide a couple of details such as error log, screenshot, which page of the book it happened, your node version (command line: `node -v`) and a link to your own repository. Not all of these details are mandatory, but most of them help to fix the Issue and to improve the book.
-
-Thanks a lot for your help!
+### 기여하기
+* 본문 내 오탈자를 수정하거나, 추가 설명이 필요한 경우 [풀 리퀘스트(Pull Request)](https://github.com/the-road-to-learn-react/the-road-to-learn-react-korean/pulls)를 보내주세요. 
+* 실습 도중 문제가 생기면 [이슈(Issues)](https://github.com/the-road-to-learn-react/the-road-to-react-korean/issues)에 등록해주세요. 이슈를 게시할 때, 문제가 발생한 부분의 오류 로그 메시지, 스크린 샷, 책 페이지, 노드 버전를 함께 명시해주세요. 여러분들의 리뷰와 이슈는 콘텐츠를 개선하는데 큰 도움이 될 것입니다.
