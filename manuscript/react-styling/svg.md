@@ -4,7 +4,7 @@
 
 이번 장은 SVG 아이콘을 더 멋지고 정확하게 사용할 수 있도록 하는, 이전에 다뤘던 "리액트에서의 CSS"를 기반으로 합니다. 다른 스타일링이나, 혹은 전혀 꾸미지 않아도 되며, SVG는 꾸미기 없이도 괜찮습니다. 
 
-이 SVG 아이콘은 [플랫아이콘 무료 사이트](https://www.flaticon.com/authors/freepik)에 있습니다. 이 사이트의 많은 SVG는 원작자를 남기면 무료로 사용할 수 있습니다. (https://www.flaticon.com/free-icon/check_109748) 여기서 SVG로 아이콘을 다운로드할 수 있으며 프로젝트 *src/check.svg* 파일에 적용하면 됩니다. 이 파일을 다운로드하는 것이 좋으나, 더 자세히 알기 위해 SVG 정의를 살펴보면 아래와 같습니다.
+이 SVG 아이콘은 [플랫아이콘 무료 사이트](https://www.flaticon.com/authors/freepik)에 있습니다. 이 사이트의 많은 SVG는 원작자를 남기면 무료로 사용할 수 있습니다. [여기서](https://www.flaticon.com/free-icon/check_109748) SVG로 아이콘을 다운로드할 수 있으며 프로젝트 *src/check.svg* 파일에 적용하면 됩니다. 이 파일을 다운로드하는 것이 좋으나, 더 자세히 알기 위해 SVG 정의를 살펴보면 아래와 같습니다.
 
 {title="Code Playground",lang="html"}
 ~~~~~~~
