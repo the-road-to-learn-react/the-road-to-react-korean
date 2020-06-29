@@ -1,10 +1,10 @@
-## SVGs in React
+## SVG 사용
 
-To create a modern React application, we'll likely need to use SVGs. Instead of giving every button element text, for instance, we might want to make it lightweight with an icon. In this section, we'll use a scalable vector graphic (SVG) as an icon in one of our React components.
+최신 리액트 애플리케이션을 만들기 위해 SVG를 사용하는 것이 좋습니다. 모든 버튼 개체 텍스트를 만드는 대신 예를 들면 여러분들은 아이콘으로 좀 더 가볍게 만들 수 있습니다. 이번에는 리액트 컴포넌트 중 하나인 확장 가능한 그래픽(SVG, scalable vector graphic)을 사용해 보겠습니다. 
 
-This section builds on the "CSS in React" we covered earlier, to give the SVG icon a good look and feel right away. It's acceptable to use a different styling approach, or no styling at all, though the SVG might look off without it.
+이번 장은 SVG 아이콘을 더 멋지고 정확하게 사용할 수 있도록 하는 이전에 다뤘던 "리액트에서의 CSS"를 기반으로 합니다. 이 장에서는 SVG에 별다른 스타일을 적용하지 않습니다. 
 
-This icon as SVG is taken from [Flaticon's Freepick](https://www.flaticon.com/authors/freepik). Many of the SVGs on this website are free to use, though they require you to mention the author. You can download the icon from [here](https://www.flaticon.com/free-icon/check_109748) as SVG and put it in your project as *src/check.svg*. Downloading the file is the recommended way, however, for the sake of completion, this is the verbose SVG definition:
+이 SVG 아이콘은 [플랫아이콘 무료 사이트](https://www.flaticon.com/authors/freepik)에 있습니다. 이 사이트의 많은 SVG는 원작자를 남기면 무료로 사용할 수 있습니다. 체크 아이콘은 [이 곳](https://www.flaticon.com/free-icon/check_109748)에서 다운받고 *src/check.svg* 파일에 저장하세요. 파일을 열어 SVG 정의를 살펴봅시다.
 
 {title="Code Playground",lang="html"}
 ~~~~~~~
@@ -23,7 +23,7 @@ This icon as SVG is taken from [Flaticon's Freepick](https://www.flaticon.com/au
 </svg>
 ~~~~~~~
 
-Because we're using create-react-app again , we can  import SVGs (similar to CSS) as React components right away. In *src/App.js*, use the following syntax for importing the SVG:
+create-react-app을 다시 쓰기 때문에 바로 리액트 컴포넌트로 CSS와 비슷하게 SVG를 가져올 수 있습니다. *src/App.js*에서 SVG를 가져오기 위해 아래 문법을 사용합니다.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -36,7 +36,7 @@ import { ReactComponent as Check } from './check.svg';
 # leanpub-end-insert
 ~~~~~~~
 
-We are importing an SVG, and this works for many different uses for SVGs (e.g. logo, background). Instead of a button text, pass the SVG component as a `height` and `width` attribute:
+SVG를 가져와서 로고, 배경 등 다양한 용도로 활용할 수 있습니다. 버튼에 텍스트 대신 'height'와 'width' 속성이 있는 SVG 컴포넌트를 사용할 수 있습니다.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -63,7 +63,7 @@ const Item = ({ item, onRemoveItem }) => (
 );
 ~~~~~~~
 
-Regardless of the styling approach you are using, you can give your SVG icon in the button a hover effect too. In the basic CSS approach, it would look like the following in the *src/App.css* file:
+여러분이 사용하는 스타일링 기법에 상관없이 SVG 아이콘 버튼에 마우스 오버 효과도 줄 수 있습니다. 기본 CSS 기법에서 *src/App.css* 파일에서 아래와 같이 표현할 수 있습니다.
 
 {title="src/App.css",lang="css"}
 ~~~~~~~
@@ -73,12 +73,12 @@ Regardless of the styling approach you are using, you can give your SVG icon in 
 }
 ~~~~~~~
 
-The create-react-app project makes using SVGs straightforward, with no extra configuration needed. This is different if you create a React project from scratch with build tools like Webpack, because you have to take care of it yourself. Anyway, SVGs make your application more approachable, so use them whenever it suits you.
+create-react-app 프로젝트에서 별도의 설정 없이 SVG를 쉽게 사용할 수 있습니다. 하지만 여러분이 웹팩 같은 빌드 도구와 함께 리액트 프로젝트를 처음부터 만든다면 여러분이 직접 관리해야 하므로 다릅니다. SVG는 여러분의 애플리케이션을 좀 더 사용하기 쉽게 만들어 주기 때문에 적극적으로 사용하길 권장합니다.
 
-### Exercises:
+### 실습하기
 
-* Confirm your [source code for the last section](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/CSS-in-React-SVG).
-  * Confirm the [changes from the last section](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/CSS-in-React...hs/CSS-in-React-SVG?expand=1).
-* Read more about [SVGs in create-react-app](https://create-react-app.dev/docs/adding-images-fonts-and-files).
-* Read more about [SVG background patterns in React](https://www.robinwieruch.de/react-svg-patterns).
-* Add another SVG icon in your application.
+* 마지막 장의 [소스 코드](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/CSS-in-React-SVG)를 확인합니다. 
+* 마지막 장에서 [변경된 코드](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/CSS-in-React...hs/CSS-in-React-SVG?expand=1)를 확인합니다. 
+* [리액트 앱 만들기 속 SVG]((https://create-react-app.dev/docs/adding-images-fonts-and-files))에 대해 더 알아보세요. 
+* [리액트 속 SVG 배경 패턴](https://www.robinwieruch.de/react-svg-patterns)에 대해 더 알아보세요.
+* 다른 SVG 아이콘을 애플리케이션에 적용해보세요.
