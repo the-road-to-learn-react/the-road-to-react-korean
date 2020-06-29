@@ -2,9 +2,9 @@
 
 최신 리액트 애플리케이션을 만들기 위해 SVG를 사용하는 것이 좋습니다. 모든 버튼 개체 텍스트를 만드는 대신 예를 들면 여러분들은 아이콘으로 좀 더 가볍게 만들 수 있습니다. 이번에는 리액트 컴포넌트 중 하나인 확장 가능한 그래픽(SVG, scalable vector graphic)을 사용해 보겠습니다. 
 
-이번 장은 SVG 아이콘을 더 멋지고 정확하게 사용할 수 있도록 하는 이전에 다뤘던 "리액트에서의 CSS"를 기반으로 합니다. 다른 스타일링이나 혹은 전혀 꾸미지 않아도 되며 SVG는 꾸미기 없이도 괜찮습니다. 
+이번 장은 SVG 아이콘을 더 멋지고 정확하게 사용할 수 있도록 하는 이전에 다뤘던 "리액트에서의 CSS"를 기반으로 합니다. 이 장에서는 SVG에 별다른 스타일을 적용하지 않습니다. 
 
-이 SVG 아이콘은 [플랫아이콘 무료 사이트](https://www.flaticon.com/authors/freepik)에 있습니다. 이 사이트의 많은 SVG는 원작자를 남기면 무료로 사용할 수 있습니다. [이 곳에서](https://www.flaticon.com/free-icon/check_109748) SVG로 아이콘을 다운로드할 수 있으며 프로젝트 *src/check.svg* 파일에 적용하면 됩니다. 이 파일을 다운로드하는 것이 좋으나 더 자세히 알기 위해 SVG 정의를 살펴보면 아래와 같습니다.
+이 SVG 아이콘은 [플랫아이콘 무료 사이트](https://www.flaticon.com/authors/freepik)에 있습니다. 이 사이트의 많은 SVG는 원작자를 남기면 무료로 사용할 수 있습니다. 체크 아이콘은 [이 곳](https://www.flaticon.com/free-icon/check_109748)에서 다운받고 *src/check.svg* 파일에 저장하세요. 파일을 열어 SVG 정의를 살펴봅시다.
 
 {title="Code Playground",lang="html"}
 ~~~~~~~
@@ -77,8 +77,8 @@ create-react-app 프로젝트에서 별도의 설정 없이 SVG를 쉽게 사용
 
 ### 실습하기
 
-* 마지막 장의 [소스 코드]를 확인합니다. (https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/CSS-in-React-SVG)
-* 마지막 장에서 [변경된 코드]를 확인합니다. (https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/CSS-in-React...hs/CSS-in-React-SVG?expand=1)
-* [리액트 앱 만들기 속 SVG]에 대해 더 알아보세요. (https://create-react-app.dev/docs/adding-images-fonts-and-files)
-* [리액트 속 SVG 배경 패턴]에 대해 더 알아보세요. (https://www.robinwieruch.de/react-svg-patterns)
+* 마지막 장의 [소스 코드](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/CSS-in-React-SVG)를 확인합니다. 
+* 마지막 장에서 [변경된 코드](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/CSS-in-React...hs/CSS-in-React-SVG?expand=1)를 확인합니다. 
+* [리액트 앱 만들기 속 SVG]((https://create-react-app.dev/docs/adding-images-fonts-and-files))에 대해 더 알아보세요. 
+* [리액트 속 SVG 배경 패턴](https://www.robinwieruch.de/react-svg-patterns)에 대해 더 알아보세요.
 * 다른 SVG 아이콘을 애플리케이션에 적용해보세요.
