@@ -1,6 +1,7 @@
 {frontmatter}
 
 intro.md
+contributor.md
 
 {mainmatter}
 
